@@ -39,3 +39,10 @@
 @keyframes trailSparkle{0%{opacity:0;scale:.35;rotate:-25deg}25%{opacity:.95;scale:1;rotate:12deg}100%{opacity:0;scale:.2;rotate:65deg;translate:0 -18px}}
 @keyframes clickSparkle{0%{opacity:0;scale:.25;translate:0 0;rotate:-20deg}18%{opacity:1;scale:1.05}100%{opacity:0;scale:.25;translate:var(--sparkle-x) var(--sparkle-y);rotate:75deg}}
 @media(prefers-reduced-motion:reduce){.cursor-sparkle{display:none}}
+
+/* Visible sparkle effects using the uploaded star PNG */
+.cursor-sparkle{position:fixed;z-index:10000;display:block;object-fit:contain;pointer-events:none;transform:translate(-50%,-50%);filter:drop-shadow(0 2px 5px #e879ad66)}
+.trail-sparkle{animation:cursorTrail .82s ease-out forwards}
+.click-sparkle{animation:clickBurst .82s cubic-bezier(.16,.75,.25,1) forwards}
+@keyframes cursorTrail{0%{opacity:0;scale:.25;rotate:-35deg}22%{opacity:1;scale:1;rotate:10deg}100%{opacity:0;scale:.15;translate:0 -20px;rotate:80deg}}
+@keyframes clickBurst{0%{opacity:0;scale:.2;translate:0 0;rotate:-25deg}20%{opacity:1;scale:1.05}100%{opacity:0;scale:.2;translate:var(--sparkle-x) var(--sparkle-y);rotate:90deg}}
