@@ -44,46 +44,45 @@
     sections.forEach(section => activeObserver.observe(section));
   }
 
-  // Tiny sparkle trail and click burst using the user's original star emblem.
-  const sparkleAsset = 'assets/1000045836%20-%20Copy.png';
-  const canSparkle = !reduceMotion && window.matchMedia('(pointer: fine)').matches;
-  if (canSparkle) {
-    let lastTrail = 0;
-    const makeSparkle = (x, y, size, extraClass = '') => {
-      const star = document.createElement('span');
-      star.className = 'cursor-sparkle ' + extraClass;
-      star.style.left = x + 'px';
-      star.style.top = y + 'px';
-      star.style.width = size + 'px';
-      star.style.height = size + 'px';
-      star.style.setProperty('--sparkle-image', 'url("' + sparkleAsset + '")');
-      document.body.appendChild(star);
-      star.addEventListener('animationend', () => star.remove(), { once: true });
-    };
 
-    document.addEventListener('pointermove', event => {
-      const now = performance.now();
-      if (now - lastTrail < 65) return;
-      lastTrail = now;
-      makeSparkle(event.clientX, event.clientY, 13 + Math.random() * 9, 'trail-sparkle');
-    }, { passive: true });
+  // Sparkle trail and click burst: use the uploaded star emblem PNG.
+  const sparkleImage = 'https://raw.githubusercontent.com/icalgan/PBL-3/main/assets/1000045836%20-%20Copy.png';
+  const addSparkle = (x, y, size, kind, dx = 0, dy = 0) => {
+    const star = document.createElement('img');
+    star.src = sparkleImage;
+    star.alt = '';
+    star.className = 'cursor-sparkle ' + kind;
+    star.style.left = x + 'px';
+    star.style.top = y + 'px';
+    star.style.width = size + 'px';
+    star.style.height = size + 'px';
+    star.style.setProperty('--sparkle-x', dx + 'px');
+    star.style.setProperty('--sparkle-y', dy + 'px');
+    document.body.appendChild(star);
+    window.setTimeout(() => star.remove(), 900);
+  };
 
-    document.addEventListener('click', event => {
-      for (let i = 0; i < 7; i++) {
-        const angle = (Math.PI * 2 * i) / 7 + Math.random() * 0.25;
-        const distance = 18 + Math.random() * 24;
-        const star = document.createElement('span');
-        star.className = 'cursor-sparkle click-sparkle';
-        star.style.left = event.clientX + 'px';
-        star.style.top = event.clientY + 'px';
-        star.style.width = (15 + Math.random() * 10) + 'px';
-        star.style.height = star.style.width;
-        star.style.setProperty('--sparkle-image', 'url("' + sparkleAsset + '")');
-        star.style.setProperty('--sparkle-x', Math.cos(angle) * distance + 'px');
-        star.style.setProperty('--sparkle-y', Math.sin(angle) * distance + 'px');
-        document.body.appendChild(star);
-        star.addEventListener('animationend', () => star.remove(), { once: true });
-      }
-    });
-  }
+  let lastSparkle = 0;
+  document.addEventListener('pointermove', event => {
+    if (event.pointerType === 'touch') return;
+    const now = performance.now();
+    if (now - lastSparkle < 55) return;
+    lastSparkle = now;
+    addSparkle(event.clientX, event.clientY, 16 + Math.random() * 10, 'trail-sparkle');
+  }, { passive: true });
+
+  document.addEventListener('click', event => {
+    for (let i = 0; i < 8; i++) {
+      const angle = (Math.PI * 2 * i) / 8;
+      const distance = 22 + Math.random() * 20;
+      addSparkle(
+        event.clientX,
+        event.clientY,
+        17 + Math.random() * 10,
+        'click-sparkle',
+        Math.cos(angle) * distance,
+        Math.sin(angle) * distance
+      );
+    }
+  });
 })();
