@@ -94,7 +94,7 @@
 .cloud-portal-glow{position:absolute;inset:0;background:linear-gradient(180deg,#fff1f777,transparent 33%,#d5eafa22 70%,#fff2f777);z-index:1;pointer-events:none}
 .cloud-sky-image{width:100%;height:100%;display:block;object-fit:cover;object-position:center 50%;transform:scale(1.04) translateY(calc((.5 - var(--cloud-progress)) * 26px));filter:saturate(.82) brightness(1.04);transition:filter .4s}
 .cloud-copy-right{align-self:center;display:flex;flex-direction:column;align-items:flex-start;gap:16px}
-.cloud-swish-image{display:block;width:min(180px,100%);height:100px;object-fit:contain;border-radius:50%;mix-blend-mode:multiply;opacity:.88;animation:cloudDrift 8s ease-in-out infinite}
+.cloud-swish-image{display:block;width:min(220px,100%);height:135px;object-fit:cover;object-position:center 17%;border-radius:48%;mix-blend-mode:multiply;opacity:.9;animation:cloudDrift 8s ease-in-out infinite}
 .cloud-side-note{font:800 15px/1.45 Nunito,sans-serif;color:#7892ad}
 .cloud-scroll-hint{margin-top:32px;font-size:8px;font-weight:800;letter-spacing:1.8px;color:#9ba8b9}
 .cloud-scroll-hint b{display:inline-grid;place-items:center;margin-left:9px;width:24px;height:24px;border-radius:50%;background:#ffffffb8;color:#d978a8;font-size:14px;animation:hintBob 1.8s ease-in-out infinite}
@@ -108,7 +108,7 @@
  .cloud-copy-left{grid-column:1;grid-row:1}
  .cloud-portal{grid-column:2;grid-row:1 / span 2;height:330px}
  .cloud-copy-right{grid-column:1;grid-row:2;gap:8px}
- .cloud-swish-image{width:130px;height:72px}
+ .cloud-swish-image{width:150px;height:90px}
  .cloud-scroll-hint{margin-top:8px}
 }
 @media(max-width:560px){
@@ -116,7 +116,7 @@
  .cloud-copy h2{font-size:27px;margin:10px 0}
  .cloud-copy p{font-size:10px}
  .cloud-portal{grid-column:2;grid-row:1 / span 2;height:260px;border-radius:80px 80px 18px 18px}
- .cloud-swish-image{width:100px;height:55px}
+ .cloud-swish-image{width:112px;height:68px}
  .cloud-side-note{font-size:11px}
  .cloud-scroll-hint{font-size:7px;letter-spacing:1px}
  .cloud-scroll-hint b{width:20px;height:20px}
