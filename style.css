@@ -574,3 +574,74 @@ body{background:#fffafd;color:var(--ink)}
 @media(prefers-reduced-motion:reduce){
   .cloud-transition-arrow,.brand-intro-cloud{animation:none!important}
 }
+
+
+/* Cloud divider correction: a short, visible cloud band, not an empty full-screen panel */
+.cloud-transition{
+  height:clamp(190px,18vw,260px)!important;
+  min-height:190px!important;
+  margin:0!important;
+  padding:0!important;
+  background:
+    radial-gradient(ellipse at 50% 0%,#fffafd 0,transparent 40%),
+    linear-gradient(180deg,#9d94ca 0%,#d6c9e9 40%,#faeefa 100%)!important;
+}
+.cloud-transition:before{
+  left:-12%!important;right:-12%!important;top:-235px!important;height:365px!important;
+  background:
+    radial-gradient(ellipse at 4% 78%,#fffafd 0 14%,transparent 15%),
+    radial-gradient(ellipse at 17% 70%,#fffafd 0 17%,transparent 18%),
+    radial-gradient(ellipse at 32% 82%,#fdf8ff 0 15%,transparent 16%),
+    radial-gradient(ellipse at 49% 73%,#fffafd 0 19%,transparent 20%),
+    radial-gradient(ellipse at 67% 82%,#fffafd 0 16%,transparent 17%),
+    radial-gradient(ellipse at 83% 70%,#fdf8ff 0 17%,transparent 18%),
+    radial-gradient(ellipse at 97% 79%,#fffafd 0 15%,transparent 16%);
+  filter:blur(10px)!important;
+}
+.cloud-transition:after{
+  left:-12%!important;right:-12%!important;bottom:-225px!important;height:350px!important;
+  background:
+    radial-gradient(ellipse at 3% 19%,#fffafd 0 17%,transparent 18%),
+    radial-gradient(ellipse at 19% 14%,#fffafd 0 18%,transparent 19%),
+    radial-gradient(ellipse at 37% 22%,#f9f5ff 0 17%,transparent 18%),
+    radial-gradient(ellipse at 53% 12%,#fffafd 0 20%,transparent 21%),
+    radial-gradient(ellipse at 72% 22%,#fffafd 0 18%,transparent 19%),
+    radial-gradient(ellipse at 90% 15%,#f8f5ff 0 17%,transparent 18%),
+    linear-gradient(180deg,#fff8fc,#dbeafa);
+  filter:blur(9px)!important;
+}
+.cloud-layer{filter:blur(18px);opacity:.85}
+.cloud-back{top:-165px}
+.cloud-front{bottom:-175px}
+.cloud-swoosh{
+  width:clamp(170px,19vw,290px)!important;
+  height:clamp(85px,10vw,145px)!important;
+  opacity:.82!important;
+  mix-blend-mode:multiply!important;
+}
+.cloud-swoosh-left{left:-22px!important;top:24%!important;transform:rotate(-8deg)!important}
+.cloud-swoosh-right{right:-18px!important;bottom:18%!important;transform:rotate(180deg)!important}
+.cloud-transition-stars{top:43%!important;font-size:22px!important;letter-spacing:18px!important}
+.cloud-transition-arrow{bottom:1%!important;width:32px!important;height:32px!important;font-size:24px!important}
+.brand-intro-section{
+  min-height:410px!important;
+  margin-top:-1px!important;
+  padding:34px 22px 58px!important;
+}
+.brand-intro-panel{
+  width:min(680px,calc(100% - 24px))!important;
+  padding:38px 32px 34px!important;
+}
+.brand-intro-cloud{bottom:-14px!important;opacity:.34!important}
+@media(max-width:800px){
+ .cloud-transition{height:225px!important;min-height:210px!important}
+ .brand-intro-section{min-height:380px!important;padding:30px 18px 50px!important}
+}
+@media(max-width:560px){
+ .cloud-transition{height:185px!important;min-height:175px!important}
+ .cloud-swoosh{width:130px!important;height:82px!important}
+ .cloud-swoosh-left{left:-30px!important;top:28%!important}
+ .cloud-swoosh-right{right:-30px!important;bottom:18%!important}
+ .brand-intro-section{min-height:360px!important;padding:24px 14px 44px!important}
+ .brand-intro-panel{padding:30px 17px 27px!important}
+}
