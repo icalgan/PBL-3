@@ -645,3 +645,55 @@ body{background:#fffafd;color:var(--ink)}
  .brand-intro-section{min-height:360px!important;padding:24px 14px 44px!important}
  .brand-intro-panel{padding:30px 17px 27px!important}
 }
+
+
+/* Make the cloud artwork a full-width dramatic divider, not tiny corner decorations */
+.cloud-transition{
+  height:clamp(360px,39vw,520px)!important;
+  min-height:350px!important;
+  overflow:hidden!important;
+  background:
+    radial-gradient(ellipse at 50% 25%,#fffafd 0,transparent 42%),
+    linear-gradient(180deg,#a79acb 0%,#d7c8e9 44%,#f9edf7 100%)!important;
+}
+.cloud-swoosh-center{
+  position:absolute!important;
+  z-index:3!important;
+  display:block!important;
+  width:112vw!important;
+  max-width:none!important;
+  height:clamp(560px,63vw,820px)!important;
+  left:50%!important;
+  right:auto!important;
+  top:-105px!important;
+  bottom:auto!important;
+  object-fit:fill!important;
+  opacity:.96!important;
+  mix-blend-mode:normal!important;
+  filter:saturate(.82) brightness(1.04)!important;
+  transform:translate3d(calc(-50% + (var(--cloud-progress,.5) - .5)*22px),0,0)!important;
+  transform-origin:center center;
+  pointer-events:none;
+}
+.cloud-transition:before{
+  top:-250px!important;
+  height:430px!important;
+  filter:blur(13px)!important;
+  opacity:.92!important;
+}
+.cloud-transition:after{
+  bottom:-250px!important;
+  height:390px!important;
+  filter:blur(12px)!important;
+  opacity:.96!important;
+}
+.cloud-transition-stars{top:48%!important;z-index:4!important}
+.cloud-transition-arrow{bottom:2%!important;z-index:5!important}
+@media(max-width:800px){
+  .cloud-transition{height:390px!important;min-height:360px!important}
+  .cloud-swoosh-center{width:145vw!important;height:600px!important;top:-80px!important}
+}
+@media(max-width:560px){
+  .cloud-transition{height:340px!important;min-height:320px!important}
+  .cloud-swoosh-center{width:178vw!important;height:500px!important;top:-62px!important}
+}
