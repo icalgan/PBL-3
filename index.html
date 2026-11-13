@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="style.css?v=6">
 
   <style>
     .recreate-sparkle{position:fixed!important;left:0;top:0;width:22px;height:22px;z-index:2147483647;pointer-events:none;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(232,105,165,.65));}
@@ -34,26 +34,27 @@
   </header>
 
   <main>
-    <section class="hero section-wrap" id="beranda">
-      <div class="hero-copy">
-        <span class="eyebrow"><i></i> SMALL STEPS, BIG IMPACT</span>
-        <h1>Give Waste a<br><em>Second Life.</em><span class="sparkle">✦</span></h1>
-        <p>Setiap benda punya kesempatan kedua. Kenali sampah, pelajari cara mengelolanya, lalu ubah barang bekas menjadi sesuatu yang berguna.</p>
-        <div class="hero-actions"><a class="button button-pink" href="#kelola">Jelajahi sekarang <span>→</span></a><a class="button button-outline" href="#tentang">Kenali RE:CREATE</a></div>
-        <div class="hero-note"><span class="note-dot"></span> Belajar · Berkreasi · Berkelanjutan</div>
+    <section class="hero-concert" id="beranda">
+      <div class="concert-stage-glow" aria-hidden="true"></div>
+      <div class="stage-truss" aria-hidden="true"></div>
+      <div class="stage-lights" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="concert-stars" aria-hidden="true"><b>✦</b><b>✧</b><b>✦</b><b>✧</b><b>✦</b></div>
+      <div class="hero-concert-inner">
+        <div class="concert-mascots" aria-label="Maskot RE:CREATE sedang tampil di konser">
+          <div class="mascot-stage mascot-girl"><span class="mascot-aura"></span><img src="assets/f_4.png" alt="Maskot perempuan RE:CREATE berambut pink"></div>
+          <div class="mascot-stage mascot-boy"><span class="mascot-aura"></span><img src="assets/f_1.png" alt="Maskot laki-laki RE:CREATE berambut pink"></div>
+        </div>
+        <div class="concert-title">
+          <span class="eyebrow">A CONCERT, A MEMORY, A SECOND CHANCE</span>
+          <h1>RE:<em>CREATE</em></h1>
+          <p class="concert-tagline">Dari Konser, Untuk Lingkungan</p>
+          <p class="concert-description">Musik menyatukan kita. Yuk, pastikan jejak setelah konser membawa dampak yang baik untuk bumi.</p>
+          <a class="button button-pink" href="#after-concert">Mulai jelajahi <span>↓</span></a>
+        </div>
       </div>
-      <div class="hero-art" aria-label="Ilustrasi dekoratif RE:CREATE">
-        <img class="hero-ornament hero-ornament-top" src="assets/1000045837.png" alt="" aria-hidden="true">
-        <img class="hero-character" src="assets/f_1.png" alt="Maskot RE:CREATE sedang berpose santai">
-        <img class="hero-ornament hero-ornament-bottom" src="assets/1000045838.png" alt="" aria-hidden="true">
-        <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
-        <div class="art-star star-one">✦</div><div class="art-star star-two">✧</div>
-        <div class="hero-blob"></div>
-        <div class="hero-sticker"><span>re-use</span><b>↻</b><small>re-imagine</small></div>
-        <div class="hero-caption">A little creativity<br>goes a long way.</div>
-        <div class="hero-flower flower-a">✿</div><div class="hero-flower flower-b">✿</div>
-      </div>
-      <div class="scroll-cue"><span></span> SCROLL TO EXPLORE</div>
+      <div class="crowd-silhouette" aria-hidden="true"><span>✦</span><span>⌁</span><span>✦</span><span>⌁</span><span>✦</span><span>⌁</span><span>✦</span></div>
+      <div class="stage-cloud-bridge" aria-hidden="true"><img src="assets/1000045837.png" alt=""></div>
+      <div class="hero-scroll-cue"><span>SCROLL TO THE AFTER PARTY</span><b>⌄</b></div>
     </section>
 
     <section class="intro section-wrap reveal" id="tentang">
@@ -64,27 +65,20 @@
       <div class="intro-doodle" aria-hidden="true">✳</div>
     </section>
 
-    <section class="cloud-transition" id="cloud-transition" aria-label="Transisi awan menuju bagian pengelolaan sampah">
-      <div class="cloud-copy cloud-copy-left">
-        <span class="eyebrow">TAKE A BREATH</span>
-        <h2>A little pause<br><em>above the clouds.</em></h2>
-        <p>Pelan-pelan, satu kebiasaan kecil bisa membawa perubahan.</p>
+    <section class="cloud-transition" id="cloud-transition" aria-label="Transisi awan dari konser menuju cerita sampah pascakonser">
+      <div class="cloud-horizon" aria-hidden="true"><span class="cloud-layer cloud-back"></span><span class="cloud-layer cloud-front"></span><span class="cloud-sun"></span></div>
+      <div class="cloud-transition-copy">
+        <span class="eyebrow">AFTER THE LAST SONG</span>
+        <h2>Konsernya usai,<br><em>ceritanya belum selesai.</em></h2>
+        <p>Di balik euforia, ada jejak yang tertinggal. Yuk, lihat apa yang bisa kita lakukan setelah lampu panggung meredup.</p>
+        <a class="text-link" href="#after-concert">Lihat jejak setelah konser <span>↓</span></a>
       </div>
-      <div class="cloud-portal">
-        <div class="cloud-portal-glow"></div>
-        <img class="cloud-sky-image" src="assets/dreamy-sky.jpg" alt="" aria-hidden="true" onerror="this.style.display='none'">
-      </div>
-      <div class="cloud-copy cloud-copy-right">
-        <img class="cloud-swish-image" src="assets/1000045837.png" alt="" aria-hidden="true" onerror="this.style.display='none'">
-        <span class="cloud-side-note">A softer way<br>to make a difference.</span>
-        <span class="cloud-scroll-hint">SCROLL TO EXPLORE <b>↓</b></span>
-      </div>
-      <div class="cloud-mist cloud-mist-one" aria-hidden="true"></div>
-      <div class="cloud-mist cloud-mist-two" aria-hidden="true"></div>
+      <img class="cloud-transition-ornament" src="assets/1000045837.png" alt="" aria-hidden="true">
+      <div class="cloud-transition-stars" aria-hidden="true">✦　✧　✦　✧　✦</div>
     </section>
 
-    <section class="waste-section section-wrap" id="kelola">
-      <div class="section-heading reveal"><span class="eyebrow">KNOW YOUR WASTE</span><h2>Kenali & <em>kelola</em> sampah</h2><p>Langkah pertama mengolah sampah adalah mengenali jenisnya. Yuk, mulai dari hal sederhana.</p></div>
+    <section class="after-concert-section section-wrap" id="after-concert">\n      <div class="after-copy"><span class="eyebrow">THE MORNING AFTER</span><h2>Setelah konser,<br><em>apa yang tersisa?</em></h2><p>Euforia konser sering meninggalkan jejak sampah dalam jumlah besar. Botol minum, gelas plastik, tiket, kertas, hingga kemasan makanan bisa ditemukan setelah acara selesai.</p></div><div class="after-waste-illustration" aria-hidden="true"><span class="waste-bottle"></span><span class="waste-cup"></span><span class="waste-ticket"></span><span class="waste-wrapper"></span><span class="waste-spark">✦</span></div><div class="after-waste-tags"><span>♧ Botol plastik</span><span>✉ Kertas & tiket</span><span>▧ Kemasan lainnya</span></div>\n    </section>\n\n    <section class="waste-section section-wrap" id="kelola">
+      <div class="section-heading reveal"><span class="eyebrow">SORT IT WITH CARE</span><h2>Sampah bukan <em>akhir cerita.</em></h2><p>Pisahkan sampah sesuai jenisnya agar bisa diproses dengan cara yang tepat. Ini langkah awal sebelum recycling dan upcycling.</p></div>
       <div class="waste-grid">
         <article class="waste-card card-blue reveal"><div class="card-illustration organic" aria-hidden="true"><span>♧</span><i>✿</i></div><div><span class="card-kicker">01 / MUDAH TERURAI</span><h3>Organik</h3><p>Sisa makanan, daun, dan bahan alami yang dapat terurai. Bisa diolah menjadi kompos.</p><a href="#panduan" class="round-link" aria-label="Pelajari sampah organik">↗</a></div></article>
         <article class="waste-card card-pink reveal"><div class="card-illustration inorganic" aria-hidden="true"><span>♧</span><i>↻</i></div><div><span class="card-kicker">02 / DAPAT DIMANFAATKAN</span><h3>Anorganik</h3><p>Plastik, kertas, kaca, dan logam. Pilah sesuai bahan agar dapat didaur ulang.</p><a href="#panduan" class="round-link" aria-label="Pelajari sampah anorganik">↗</a></div></article>
@@ -96,7 +90,7 @@
     <section class="upcycle-section" id="upcycling">
       <div class="upcycle-inner section-wrap">
         <div class="upcycle-art reveal" aria-hidden="true"><div class="upcycle-ring"></div><img class="upcycle-character" src="assets/f_4.png" alt=""><img class="upcycle-recycle" src="assets/1000045835.png" alt=""><span class="upcycle-spark s1">✦</span><span class="upcycle-spark s2">✧</span><div class="upcycle-label">MAKE<br>IT NEW!</div></div>
-        <div class="upcycle-copy reveal"><span class="eyebrow">A NEW WAY TO SEE THINGS</span><h2>Ubah yang lama,<br>jadi <em>luar biasa.</em></h2><p>Upcycling adalah proses kreatif mengubah barang bekas menjadi produk baru dengan fungsi atau nilai yang lebih tinggi. Bukan sekadar membuang—kita memberi kesempatan kedua.</p><a class="button button-blue" href="#ide">Temukan ide upcycling <span>→</span></a><div class="upcycle-footnote">Less waste, more imagination.</div></div>
+        <div class="upcycle-copy reveal"><span class="eyebrow">FROM WASTE TO WONDER</span><h2>Dari sisa konser,<br>jadi <em>karya baru.</em></h2><p>Upcycling adalah proses kreatif mengubah barang bekas menjadi produk baru dengan fungsi atau nilai yang lebih tinggi. Bukan sekadar membuang—kita memberi kesempatan kedua.</p><a class="button button-blue" href="#ide">Temukan ide upcycling <span>→</span></a><div class="upcycle-footnote">Less waste, more imagination.</div></div>
       </div>
     </section>
 
@@ -121,7 +115,7 @@
     <div class="footer-main section-wrap"><div class="footer-brand"><a class="brand" href="#beranda"><span class="brand-mark">↻</span><span>RE:<b>CREATE</b></span></a><p>Belajar, berkreasi, dan memberi hidup baru untuk sampah.</p><span class="footer-motto">Give waste a second life. ♡</span></div><div class="footer-links"><div><b>Jelajahi</b><a href="#tentang">Tentang</a><a href="#kelola">Kelola Sampah</a><a href="#upcycling">Upcycling</a></div><div><b>Mulai dari sini</b><a href="#ide">Ide Kreasi</a><a href="#panduan">Panduan</a><a href="#aksi">Mulai Aksi</a></div><div><b>RE:CREATE</b><a href="mailto:hello@recreate.example">Kontak</a><a href="#beranda">Kembali ke atas ↑</a></div></div></div>
     <div class="footer-bottom section-wrap"><span>© 2026 RE:CREATE · Creative environmental learning.</span><span>Made with care & creativity <b>✦</b></span></div>
   </footer>
-  <script src="script.js?v=5"></script>
+  <script src="script.js?v=6"></script>
 
   <script>
   (function () {
