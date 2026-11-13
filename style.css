@@ -223,3 +223,33 @@ body{background:#fffafd;color:var(--ink)}
 .concert-stars b{animation:twinkle 2.8s ease-in-out infinite}
 .concert-stars b:nth-child(2){animation-delay:.5s}.concert-stars b:nth-child(3){animation-delay:1s}.concert-stars b:nth-child(4){animation-delay:1.5s}
 @keyframes titleArrive{from{opacity:0;transform:translateY(22px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+
+/* Fix: give the performers their own clear stage area; keep title panel below them. */
+.hero-concert{min-height:820px}
+.hero-concert-inner{min-height:760px;align-items:stretch;padding:0}
+.concert-mascots{inset:105px 5% 285px;align-items:flex-end;gap:clamp(24px,8vw,130px)}
+.mascot-stage{width:min(34vw,380px);height:100%;align-items:flex-end}
+.mascot-stage img{max-height:100%;max-width:100%;object-fit:contain}
+.mascot-girl img{height:100%;transform:rotate(-7deg) translateY(0);animation:performGirl 5s ease-in-out infinite}
+.mascot-boy img{height:96%;transform:rotate(7deg) translateY(0);animation:performBoy 5.5s ease-in-out infinite}
+.concert-title{position:absolute;left:50%;bottom:85px;transform:translateX(-50%);width:min(650px,90%);padding:18px 30px 20px}
+.concert-title h1{font-size:clamp(42px,6vw,70px);margin:8px 0 4px}
+.concert-description{margin-bottom:12px}
+.stage-cloud-bridge{z-index:3}
+@media(max-width:800px){
+ .hero-concert{min-height:740px}
+ .hero-concert-inner{min-height:690px}
+ .concert-mascots{inset:115px 1% 275px;gap:0}
+ .mascot-stage{width:48%}
+ .concert-title{bottom:75px;width:calc(100% - 36px);padding:16px 18px}
+}
+@media(max-width:560px){
+ .hero-concert{min-height:700px}
+ .hero-concert-inner{min-height:650px}
+ .concert-mascots{inset:100px 0 285px}
+ .mascot-stage{width:50%}
+ .concert-title{bottom:76px;width:calc(100% - 28px);padding:14px 12px}
+ .concert-title h1{font-size:42px}
+ .concert-description{font-size:10px}
+}
