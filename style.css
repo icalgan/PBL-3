@@ -922,3 +922,78 @@ body{background:#fffafd;color:var(--ink)}
   .cloud-transition-arrow{bottom:10%!important;width:34px!important;height:34px!important;font-size:23px!important}
 }
 @media(prefers-reduced-motion:reduce){.cloud-transition-arrow{animation:none!important}}
+
+
+/* Actual user-supplied 1000045837 artwork, tightly cropped and scaled as the cloud bridge */
+.cloud-transition{
+  position:relative!important;
+  height:clamp(650px,48vw,920px)!important;
+  min-height:650px!important;
+  overflow:hidden!important;
+  display:block!important;
+  padding:0!important;
+  background:
+    radial-gradient(ellipse at 50% 32%,#fffafe 0%,#f9effa 42%,transparent 74%),
+    linear-gradient(180deg,#e9e4f7 0%,#f6eaf6 58%,#e9effb 100%)!important;
+}
+.cloud-transition .cloudscape-image{
+  display:block!important;
+  position:absolute!important;
+  z-index:2!important;
+  width:100%!important;
+  height:100%!important;
+  inset:0!important;
+  object-fit:fill!important;
+  opacity:1!important;
+  mix-blend-mode:normal!important;
+  pointer-events:none!important;
+  filter:saturate(.82) brightness(1.04)!important;
+}
+.cloud-transition:before{
+  content:""!important;
+  display:block!important;
+  position:absolute!important;
+  z-index:1!important;
+  top:-150px!important;left:-5%!important;right:-5%!important;
+  height:260px!important;
+  border-radius:0 0 50% 50%!important;
+  background:
+    radial-gradient(ellipse at 10% 100%,#fffafd 0 22%,transparent 23%),
+    radial-gradient(ellipse at 30% 95%,#fffafd 0 20%,transparent 21%),
+    radial-gradient(ellipse at 52% 100%,#fffafd 0 22%,transparent 23%),
+    radial-gradient(ellipse at 75% 94%,#fffafd 0 21%,transparent 22%),
+    radial-gradient(ellipse at 94% 100%,#fffafd 0 20%,transparent 21%)!important;
+  filter:blur(18px)!important;
+  opacity:.85!important;
+}
+.cloud-transition:after{
+  content:""!important;
+  display:block!important;
+  position:absolute!important;
+  z-index:3!important;
+  bottom:-170px!important;left:-4%!important;right:-4%!important;
+  height:260px!important;
+  border-radius:50% 50% 0 0!important;
+  background:
+    radial-gradient(ellipse at 8% 0%,#fffafd 0 21%,transparent 22%),
+    radial-gradient(ellipse at 28% 4%,#fffafd 0 20%,transparent 21%),
+    radial-gradient(ellipse at 50% 0%,#fffafd 0 22%,transparent 23%),
+    radial-gradient(ellipse at 73% 2%,#fffafd 0 21%,transparent 22%),
+    radial-gradient(ellipse at 94% 0%,#fffafd 0 21%,transparent 22%)!important;
+  filter:blur(16px)!important;
+}
+.cloud-transition-stars{
+  z-index:4!important;top:46%!important;
+  text-shadow:0 0 12px #fff,0 0 26px #eeaed3!important;
+}
+.cloud-transition-arrow{z-index:5!important;bottom:7%!important}
+.brand-intro-section{margin-top:-1px!important}
+@media(max-width:800px){
+  .cloud-transition{height:clamp(420px,68vw,620px)!important;min-height:420px!important}
+  .cloud-transition .cloudscape-image{object-fit:fill!important}
+}
+@media(max-width:560px){
+  .cloud-transition{height:380px!important;min-height:360px!important}
+  .cloud-transition-stars{top:48%!important}
+  .cloud-transition-arrow{bottom:6%!important}
+}
