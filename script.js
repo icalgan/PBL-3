@@ -46,4 +46,26 @@
 
 
 
+
+  // Scroll-linked parallax: the sky portal drifts gently as the page moves.
+  const cloudTransition = document.querySelector('.cloud-transition');
+  if (cloudTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let cloudTicking = false;
+    const updateCloudProgress = () => {
+      const rect = cloudTransition.getBoundingClientRect();
+      const span = window.innerHeight + rect.height;
+      const progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / span));
+      cloudTransition.style.setProperty('--cloud-progress', progress.toFixed(3));
+      cloudTicking = false;
+    };
+    updateCloudProgress();
+    window.addEventListener('scroll', () => {
+      if (!cloudTicking) {
+        window.requestAnimationFrame(updateCloudProgress);
+        cloudTicking = true;
+      }
+    }, { passive: true });
+    window.addEventListener('resize', updateCloudProgress, { passive: true });
+  }
+
 })();
