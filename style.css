@@ -253,3 +253,146 @@ body{background:#fffafd;color:var(--ink)}
  .concert-title h1{font-size:42px}
  .concert-description{font-size:10px}
 }
+
+
+/* ===== Concert hero: real uploaded visual assets ===== */
+.hero-concert{
+  min-height:min(880px,calc(100vh - 90px));
+  height:clamp(720px,calc(100vh - 70px),900px);
+  margin-top:12px;
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:#aaa0d9;
+}
+.concert-stage-bg{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center 38%;
+  z-index:-3;
+  filter:saturate(.9) brightness(1.02);
+}
+.concert-stage-overlay{
+  position:absolute;inset:0;z-index:-2;pointer-events:none;
+  background:linear-gradient(180deg,#726ba033 0%,#8f81bf12 38%,#675d9d50 78%,#6b649f88 100%);
+}
+.hero-concert:before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 40%,transparent 30%,#4d487a30 100%);
+}
+.hero-concert-inner{
+  width:min(1250px,100%);height:100%;min-height:0;margin:0 auto;
+  position:relative;display:block;padding:0;
+}
+.concert-mascots{
+  position:absolute;inset:4% 0 17%;z-index:2;
+  display:flex;align-items:center;justify-content:center;pointer-events:none;
+}
+.concert-duo{
+  display:block;width:min(1180px,94vw);height:100%;
+  object-fit:contain;object-position:center center;
+  filter:drop-shadow(0 18px 24px #34345a42);
+  animation:duoStageFloat 7s ease-in-out infinite;
+}
+.concert-title{
+  position:absolute;z-index:4;left:50%;bottom:9%;
+  transform:translateX(-50%);
+  width:min(590px,86vw);padding:18px 30px 20px;
+  border:1px solid #fff9;border-radius:28px;
+  background:linear-gradient(180deg,#716ca7a8,#625e98b8);
+  box-shadow:0 14px 45px #37345d44,inset 0 1px #ffffff55;
+  backdrop-filter:blur(5px);text-align:center;color:#fff;
+}
+.concert-title .eyebrow{color:#fff2fb;justify-content:center;font-size:9px}
+.concert-title h1{font:500 clamp(43px,6vw,76px)/.95 Georgia,serif;color:#fff;margin:9px 0 8px;letter-spacing:0}
+.concert-title h1 em{color:#ffe1f1;font-style:normal}
+.concert-tagline{display:inline-block;margin:0 auto 9px;padding:8px 21px;border-radius:40px;background:#fce8f5;color:#7773ac;font-weight:800;font-size:13px}
+.concert-description{max-width:440px;margin:0 auto 14px;color:#fff;font-size:12px;line-height:1.7}
+.concert-title .button{background:#fff0f8;color:#8774a9;box-shadow:0 6px 20px #3e376455}
+.concert-crowd{
+  position:absolute;z-index:5;left:0;bottom:-3px;width:100%;height:clamp(185px,27vw,340px);
+  display:block;object-fit:fill;object-position:center bottom;
+  pointer-events:none;filter:drop-shadow(0 -5px 14px #514b8055);
+}
+.hero-scroll-cue{position:absolute;z-index:7;left:50%;bottom:8px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:2px;color:#fdf3ff;font-size:8px;letter-spacing:1.8px;text-shadow:0 1px 8px #4b4779}
+.hero-scroll-cue b{font-size:25px;animation:hintBob 1.7s ease-in-out infinite}
+@keyframes duoStageFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* ===== The cloud is the actual transition between concert and waste ===== */
+.cloud-transition{
+  --cloud-progress:.5;
+  width:100%;min-height:500px;height:clamp(430px,58vw,620px);
+  margin:0;padding:0;position:relative;isolation:isolate;overflow:hidden;
+  display:grid;place-items:center;border:0;border-radius:0;box-shadow:none;
+  background:linear-gradient(180deg,#aaa0d9 0%,#c9c5ed 20%,#dce6fa 55%,#f8e8f4 100%);
+}
+.cloud-transition:before{
+  content:"";position:absolute;z-index:0;left:-12%;right:-12%;top:-170px;height:360px;
+  border-radius:0 0 50% 50%;background:radial-gradient(ellipse at 50% 100%,#fff9 0%,#f8edfbcc 40%,#e7e1f8aa 73%,transparent 74%);
+  filter:blur(12px);transform:translateY(calc(var(--cloud-progress)*20px));
+}
+.cloud-transition:after{
+  content:"";position:absolute;z-index:1;left:-10%;right:-10%;bottom:-185px;height:370px;
+  border-radius:55% 55% 0 0;background:linear-gradient(180deg,#fff9f7cc,#e8e9fb 60%,#c8dcf3);
+  filter:blur(8px);box-shadow:0 -22px 60px #fff8;
+  transform:translateY(calc((1 - var(--cloud-progress))*-26px));
+}
+.cloud-horizon{position:absolute;inset:0;z-index:0;overflow:hidden}
+.cloud-layer{position:absolute;display:block;left:-12%;width:124%;height:230px;border-radius:50%;filter:blur(21px);background:#fff9}
+.cloud-back{top:-150px;box-shadow:160px 42px 0 24px #f8e8f4,-200px 55px 0 34px #dce9fb,560px 28px 0 28px #e8e4fa}
+.cloud-front{bottom:-175px;height:280px;background:#fff9;box-shadow:170px -35px 0 22px #f9e5f2,-180px -15px 0 32px #dce9fc,610px -30px 0 25px #e5e3fa}
+.cloud-sun{position:absolute;width:190px;height:190px;border-radius:50%;left:50%;top:49%;transform:translate(-50%,-50%);background:radial-gradient(circle,#fff 0 9%,#fff4 22%,#fbdcf0a0 47%,transparent 72%);filter:blur(8px)}
+.cloud-transition-copy{
+  position:relative;z-index:4;width:min(650px,calc(100% - 38px));
+  padding:32px 34px;text-align:center;border:1px solid #ffffffb8;border-radius:30px;
+  background:#fffaf0a8;backdrop-filter:blur(7px);
+  box-shadow:0 16px 45px #7777aa18;
+  transform:translateY(calc((.5 - var(--cloud-progress,.5))*24px));
+}
+.cloud-transition-copy .eyebrow{justify-content:center;color:#9b8db5}
+.cloud-transition-copy h2{font:500 clamp(30px,4.7vw,51px)/1.08 Georgia,serif;color:#5a6198;margin:13px 0}
+.cloud-transition-copy h2 em{font-style:italic;color:#d98fbd}
+.cloud-transition-copy p{max-width:500px;margin:0 auto 14px;font-size:13px;line-height:1.8;color:#7d83a8}
+.cloud-transition-copy .text-link{color:#cf80ad}
+.cloud-swoosh{
+  position:absolute;z-index:3;width:min(46vw,600px);height:210px;object-fit:contain;
+  opacity:.78;pointer-events:none;mix-blend-mode:screen;
+  filter:saturate(.75) brightness(1.08);
+  will-change:transform;
+}
+.cloud-swoosh-left{left:-90px;top:15%;transform:translate3d(calc(var(--cloud-progress)*24px),calc((.5 - var(--cloud-progress))*35px,0),0) rotate(-7deg)}
+.cloud-swoosh-right{right:-90px;bottom:7%;transform:translate3d(calc(var(--cloud-progress)*-22px),calc((.5 - var(--cloud-progress))*-30px,0),0) rotate(180deg)}
+.cloud-transition-stars{position:absolute;z-index:3;top:12%;left:0;right:0;text-align:center;color:#fff5;font-size:28px;letter-spacing:17px;text-shadow:0 0 15px #fff;pointer-events:none}
+.cloud-floor-glow{position:absolute;z-index:2;left:20%;right:20%;bottom:8%;height:70px;border-radius:50%;background:#fff9;filter:blur(36px)}
+.after-concert-section{background:linear-gradient(125deg,#fffafd,#f2f6ff);border-color:#fff;box-shadow:0 16px 55px #7c8bb51b}
+@media(max-width:800px){
+ .hero-concert{height:760px;min-height:700px}
+ .concert-mascots{inset:8% 0 21%}
+ .concert-duo{width:100%;height:100%;object-fit:contain}
+ .concert-title{bottom:10%;width:min(560px,90vw)}
+ .concert-crowd{height:245px}
+ .cloud-transition{height:500px;min-height:480px}
+ .cloud-swoosh{width:55vw;height:160px}
+}
+@media(max-width:560px){
+ .hero-concert{height:690px;min-height:650px}
+ .concert-mascots{inset:8% -12% 25%}
+ .concert-duo{width:120%;max-width:none;object-fit:contain}
+ .concert-title{bottom:12%;width:calc(100% - 28px);padding:14px 14px 16px;border-radius:21px}
+ .concert-title h1{font-size:43px}
+ .concert-title .eyebrow{font-size:7px;letter-spacing:1px}
+ .concert-tagline{font-size:10px;padding:7px 14px}
+ .concert-description{font-size:10px}
+ .concert-crowd{height:190px}
+ .hero-scroll-cue{font-size:6px;bottom:3px}
+ .cloud-transition{height:470px;min-height:450px}
+ .cloud-transition-copy{padding:26px 18px;border-radius:22px}
+ .cloud-transition-copy h2{font-size:29px}
+ .cloud-transition-copy p{font-size:11px}
+ .cloud-swoosh{width:72vw;height:120px;opacity:.65}
+ .cloud-swoosh-left{left:-90px;top:8%}
+ .cloud-swoosh-right{right:-90px;bottom:5%}
+}
+@media(prefers-reduced-motion:reduce){
+ .concert-duo{animation:none!important}
+ .hero-scroll-cue b{animation:none!important}
+}
