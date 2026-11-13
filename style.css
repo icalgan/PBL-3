@@ -123,3 +123,94 @@
  .cloud-mist-one{left:5%}
 }
 @media(prefers-reduced-motion:reduce){.cloud-swish-image,.cloud-scroll-hint b{animation:none!important}.cloud-portal,.cloud-sky-image{transform:none!important}}
+
+
+/* RE:CREATE — pastel concert-to-upcycling visual direction */
+:root{--pink:#f3a5cb;--pink-soft:#fce8f2;--blue:#8fc8ee;--blue-soft:#e5f3fc;--ink:#4c568e;--cream:#fffafd}
+body{background:#fffafd;color:var(--ink)}
+.site-header{background:#ffffffd9;border-color:#fff;box-shadow:0 10px 35px #5b6ca515}
+.brand{font-family:Georgia,serif;font-weight:500;letter-spacing:1px}
+.brand b{font-weight:500}
+.hero-concert{min-height:760px;margin-top:16px;position:relative;isolation:isolate;overflow:hidden;background:
+ radial-gradient(ellipse at 50% 24%,#c5c9ff 0,#a8b9ef 36%,#8a8bc7 70%,#696b9f 100%);
+}
+.hero-concert:before{content:"";position:absolute;inset:0;z-index:-1;background:
+ radial-gradient(ellipse at 14% 18%,#f8c9e8a8,transparent 28%),
+ radial-gradient(ellipse at 85% 22%,#f8d2e8a0,transparent 26%),
+ linear-gradient(180deg,#6f6fa744 0%,transparent 42%,#555b91a8 82%,#c9c7ef 100%)}
+.concert-stage-glow{position:absolute;inset:0;z-index:-1;background:repeating-linear-gradient(115deg,transparent 0 12%,#fff4 12.2%,transparent 12.6% 24%),radial-gradient(ellipse at 50% 45%,#f9eaff55,transparent 45%)}
+.stage-truss{position:absolute;top:56px;left:-4%;width:108%;height:170px;border:8px solid #e6dfff77;border-bottom-width:4px;transform:perspective(280px) rotateX(-9deg);border-radius:18px;box-shadow:0 0 18px #fff8,inset 0 0 18px #fff5}
+.stage-truss:before,.stage-truss:after{content:"";position:absolute;left:0;right:0;height:2px;background:#fff9;top:35%;box-shadow:0 35px #fff7,0 70px #fff6}
+.stage-truss:after{left:10%;right:10%;top:0;height:100%;border-left:2px solid #fff7;border-right:2px solid #fff7;box-shadow:80px 0 #fff4,-80px 0 #fff4}
+.stage-lights{position:absolute;top:105px;left:0;right:0;display:flex;justify-content:space-evenly;z-index:1}
+.stage-lights i{width:42px;height:54px;border-radius:50% 50% 12px 12px;background:#fff4f8;box-shadow:0 0 22px 10px #ffc9eb99;transform:rotate(10deg);animation:stagePulse 3s ease-in-out infinite}
+.stage-lights i:nth-child(2n){background:#d7f1ff;box-shadow:0 0 25px 10px #b8e4ff99;animation-delay:.8s}
+.concert-stars{position:absolute;inset:20% 4% auto;display:flex;justify-content:space-around;color:#fff3fb;font-size:clamp(24px,4vw,52px);text-shadow:0 0 20px #fff;pointer-events:none}
+.concert-stars b:nth-child(2n){margin-top:110px;color:#fbd5ec}
+.hero-concert-inner{width:min(1180px,calc(100% - 48px));min-height:660px;margin:auto;position:relative;display:flex;align-items:flex-end;justify-content:center;padding-bottom:100px}
+.concert-mascots{position:absolute;inset:115px 4% 130px;display:flex;justify-content:center;align-items:center;gap:clamp(8px,6vw,100px);pointer-events:none}
+.mascot-stage{position:relative;width:min(34vw,360px);height:100%;display:flex;align-items:center;justify-content:center}
+.mascot-stage img{position:relative;z-index:2;max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 20px 22px #39365e55)}
+.mascot-girl img{height:100%;transform:rotate(-7deg) translateY(10px);animation:performGirl 5s ease-in-out infinite}
+.mascot-boy img{height:94%;transform:rotate(7deg) translateY(25px);animation:performBoy 5.5s ease-in-out infinite}
+.mascot-aura{position:absolute;width:85%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#fbe4f7aa,transparent 68%);filter:blur(5px)}
+.concert-title{position:relative;z-index:4;text-align:center;width:min(590px,90%);padding:22px 30px 24px;border:1px solid #fff7;border-radius:28px;background:linear-gradient(180deg,#7779b766,#696b9d9c);backdrop-filter:blur(8px);box-shadow:0 15px 45px #45466d35;color:white}
+.concert-title .eyebrow{color:#fff1fa;justify-content:center}
+.concert-title h1{font:500 clamp(48px,8vw,88px)/.95 Georgia,serif;letter-spacing:1px;margin:12px 0 7px;color:#fff;text-shadow:0 4px 18px #66598c88}
+.concert-title h1 em{font-style:normal;color:#ffe3f2}
+.concert-tagline{display:inline-block;margin:0 auto 10px;padding:8px 22px;border-radius:30px;background:#fbe4f2;color:#7272a8;font-weight:800;font-size:14px}
+.concert-description{max-width:430px;margin:0 auto 18px;color:#fff;font-size:13px;line-height:1.7}
+.concert-title .button{background:#fff1fa;color:#8c6b9f}
+.crowd-silhouette{position:absolute;bottom:0;left:0;right:0;height:115px;display:flex;justify-content:space-around;align-items:flex-end;overflow:hidden;color:#4d4f82}
+.crowd-silhouette:before{content:"";position:absolute;inset:30px 0 0;background:linear-gradient(180deg,#55588900,#555889dd);clip-path:polygon(0 45%,4% 15%,8% 48%,12% 28%,16% 55%,20% 12%,25% 45%,30% 22%,35% 56%,40% 16%,45% 45%,50% 12%,55% 50%,60% 18%,65% 53%,70% 12%,75% 44%,80% 22%,85% 55%,90% 18%,95% 46%,100% 25%,100% 100%,0 100%)}
+.crowd-silhouette span{position:relative;z-index:1;color:#fff4fa;font-size:22px;padding-bottom:22px;text-shadow:0 0 14px #ffc9e9}
+.stage-cloud-bridge{position:absolute;bottom:-52px;left:-4%;width:108%;height:155px;z-index:3;pointer-events:none}
+.stage-cloud-bridge img{width:100%;height:100%;object-fit:cover;object-position:center 22%;opacity:.95;filter:saturate(.75) brightness(1.1)}
+.hero-scroll-cue{position:absolute;bottom:12px;z-index:4;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:5px;color:#7776a5;font-size:8px;letter-spacing:2px}
+.hero-scroll-cue b{font-size:26px;animation:hintBob 1.7s infinite}
+.cloud-transition{width:100%;min-height:560px;margin:0;padding:0;display:flex;align-items:center;justify-content:center;border:0;border-radius:0;box-shadow:none;overflow:hidden;position:relative;background:linear-gradient(180deg,#d9d9fa 0%,#f4e8fa 43%,#fff4fa 100%)}
+.cloud-transition:before{content:"";position:absolute;z-index:0;left:-8%;right:-8%;bottom:-110px;height:330px;border-radius:50% 50% 0 0;background:radial-gradient(ellipse at 50% 10%,#fff8ff 0 12%,transparent 55%),linear-gradient(180deg,#e9e7ff,#c7ddf5 78%,#f9e4f2);filter:blur(4px)}
+.cloud-transition:after{content:"";position:absolute;z-index:1;left:-10%;right:-10%;bottom:-170px;height:290px;border-radius:50% 50% 0 0;background:linear-gradient(180deg,#f9e9fa,#d8e5fb);box-shadow:0 -20px 50px #fff8}
+.cloud-horizon{position:absolute;inset:0;overflow:hidden;z-index:0}
+.cloud-layer{position:absolute;display:block;left:-8%;width:116%;height:190px;border-radius:50%;filter:blur(16px);background:#fff8}
+.cloud-back{top:-115px;box-shadow:120px 38px 0 25px #f9e7f5,-180px 50px 0 35px #dceafa,520px 30px 0 18px #e7e3fb}
+.cloud-front{bottom:-130px;height:250px;background:#fff9;box-shadow:170px -35px 0 20px #f9e5f2,-180px -15px 0 28px #dce9fc,600px -22px 0 25px #e5e2fb}
+.cloud-sun{position:absolute;width:160px;height:160px;border-radius:50%;left:50%;top:45%;transform:translate(-50%,-50%);background:radial-gradient(circle,#fff8 0 25%,#fbdaf0 55%,transparent 72%);filter:blur(5px)}
+.cloud-transition-copy{position:relative;z-index:3;text-align:center;width:min(620px,calc(100% - 40px));padding:45px 35px;border-radius:32px;background:#ffffff66;backdrop-filter:blur(9px);border:1px solid #fff8;box-shadow:0 16px 40px #8995c21c}
+.cloud-transition-copy h2{font:500 clamp(32px,5vw,55px)/1.08 Georgia,serif;color:#555b92;margin:16px 0}
+.cloud-transition-copy h2 em{color:#df8ebc;font-style:italic}
+.cloud-transition-copy p{max-width:490px;margin:0 auto 22px;color:#7783a6;line-height:1.8;font-size:13px}
+.cloud-transition-copy .eyebrow{justify-content:center}
+.cloud-transition-ornament{position:absolute;z-index:2;width:min(360px,42vw);height:170px;object-fit:contain;left:50%;bottom:12px;transform:translateX(-50%);opacity:.75;mix-blend-mode:multiply;animation:cloudDrift 8s ease-in-out infinite}
+.cloud-transition-stars{position:absolute;z-index:2;top:16%;left:0;right:0;text-align:center;color:#fff;font-size:24px;letter-spacing:16px;text-shadow:0 0 14px #e7a6d2;pointer-events:none}
+.after-concert-section{width:min(1100px,calc(100% - 56px));margin:70px auto 45px;display:grid;grid-template-columns:1fr 1.1fr;gap:20px 50px;align-items:center;padding:55px 6%;border-radius:38px;background:linear-gradient(120deg,#fff8fb,#f2f6ff);border:1px solid #fff;box-shadow:0 18px 50px #8585b015;position:relative;overflow:hidden}
+.after-copy h2{font:500 clamp(34px,4.4vw,52px)/1.04 Georgia,serif;color:#555b92;margin:16px 0}
+.after-copy h2 em{color:#e28fbd}
+.after-copy p{font-size:13px;line-height:1.9;color:#7884a3;max-width:430px}
+.after-waste-illustration{height:235px;position:relative;display:flex;align-items:end;justify-content:center;gap:18px;padding-bottom:25px}
+.waste-bottle{width:62px;height:142px;border:4px solid #8fc8ee;border-radius:17px 17px 14px 14px;background:linear-gradient(90deg,#c4e9fa99,#fff9);transform:rotate(-13deg);position:relative;box-shadow:inset -9px 0 #a4d5f0}
+.waste-bottle:before{content:"";position:absolute;width:28px;height:23px;left:13px;top:-24px;border:4px solid #8fc8ee;border-bottom:0;border-radius:7px 7px 0 0;background:#c7e8fa}
+.waste-cup{width:75px;height:115px;border:4px solid #e7a7d0;border-top:9px solid #e7a7d0;border-radius:8px 8px 25px 25px;background:linear-gradient(90deg,#fbe5f2aa,#fff8);transform:rotate(9deg)}
+.waste-cup:before{content:"";position:absolute;left:42px;top:-45px;width:5px;height:45px;background:#e7a7d0;transform:rotate(10deg);border-radius:4px}
+.waste-ticket{width:78px;height:54px;background:#fff4d8;border:2px dashed #d7b8df;transform:rotate(-12deg);position:relative}
+.waste-ticket:after{content:"CONCERT\A TICKET";white-space:pre;display:grid;place-items:center;height:100%;font:800 10px Nunito;color:#b18bc1}
+.waste-wrapper{width:60px;height:40px;background:linear-gradient(135deg,#f5d8e8,#d9edfa);border:2px solid #e4c3dd;transform:rotate(17deg);border-radius:8px}
+.waste-spark{position:absolute;right:12%;top:12%;font-size:40px;color:#e7a5cd;animation:twinkle 2.5s infinite}
+.after-waste-tags{grid-column:1/-1;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.after-waste-tags span{padding:10px 17px;border:1px solid #fff;background:#ffffffb8;border-radius:30px;color:#7883a5;font-size:11px;font-weight:800;box-shadow:0 5px 15px #8585b00e}
+.waste-section{padding-top:80px;padding-bottom:90px}
+.section-heading h2,.intro h2,.upcycle-copy h2,.action-section h2{font-family:Georgia,serif;font-weight:500;letter-spacing:-1px;color:#555b92}
+.section-heading h2 em,.intro h2 em,.upcycle-copy h2 em,.action-section h2 em{color:#df8ebc;font-style:italic}
+.waste-card,.idea-card{border-color:#f4e7f0;box-shadow:0 12px 32px #8b8ab50d}
+.waste-card h3,.idea-info h3{color:#555b92}
+.upcycle-section{background:linear-gradient(120deg,#f7eaf7,#e8f4fc 52%,#fff7fb);position:relative;overflow:hidden}
+.upcycle-section:before,.upcycle-section:after{content:"✦　✧　✦　✧　✦";position:absolute;left:2%;top:15%;font-size:28px;color:#e6b1d3;opacity:.6;letter-spacing:15px}
+.upcycle-section:after{left:auto;right:1%;top:auto;bottom:18%}
+.action-section{background:linear-gradient(120deg,#fbe8f3,#eef5ff);border:1px solid #fff}
+.site-footer{background:#fffafd}
+@keyframes stagePulse{0%,100%{opacity:.75;filter:brightness(1)}50%{opacity:1;filter:brightness(1.35)}}
+@keyframes performGirl{0%,100%{transform:rotate(-7deg) translateY(10px)}50%{transform:rotate(-3deg) translateY(-12px)}}
+@keyframes performBoy{0%,100%{transform:rotate(7deg) translateY(25px)}50%{transform:rotate(3deg) translateY(7px)}}
+@media(max-width:800px){.hero-concert{min-height:690px}.hero-concert-inner{min-height:620px;padding-bottom:80px}.concert-mascots{inset:125px 1% 195px;gap:0}.mascot-stage{width:48%}.concert-title{padding:18px 15px}.stage-cloud-bridge{height:115px}.cloud-transition{min-height:480px}.after-concert-section{grid-template-columns:1fr;padding:40px 7%;gap:5px}.after-waste-illustration{height:190px}.after-waste-tags{grid-column:auto}}
+@media(max-width:560px){.hero-concert{min-height:640px;margin-top:8px}.hero-concert-inner{width:100%;min-height:600px;padding-bottom:76px}.concert-mascots{inset:105px 0 215px;gap:0}.mascot-stage{width:50%}.mascot-girl img{transform:rotate(-7deg) translateY(8px) scale(1.08)}.mascot-boy img{transform:rotate(7deg) translateY(17px) scale(1.02)}.concert-title{width:calc(100% - 30px);padding:16px 13px;border-radius:22px}.concert-title h1{font-size:48px}.concert-title .eyebrow{font-size:7px;letter-spacing:1.3px}.concert-tagline{font-size:11px}.concert-description{font-size:11px}.stage-lights{top:70px}.stage-lights i{width:25px;height:35px}.stage-truss{top:35px;height:120px}.stage-cloud-bridge{height:95px;bottom:-30px}.crowd-silhouette{height:85px}.cloud-transition{min-height:470px}.cloud-transition-copy{padding:32px 20px}.cloud-transition-ornament{width:75vw;height:115px}.after-concert-section{width:calc(100% - 30px);margin:38px auto 22px;border-radius:26px;padding:32px 22px}.after-copy h2{font-size:37px}.after-copy p{font-size:12px}.after-waste-illustration{height:160px;gap:10px}.waste-bottle{transform:scale(.8) rotate(-13deg)}.waste-cup{transform:scale(.8) rotate(9deg)}.waste-ticket{transform:scale(.8) rotate(-12deg)}.waste-wrapper{transform:scale(.8) rotate(17deg)}.after-waste-tags span{font-size:9px;padding:8px 12px}}
+@media(prefers-reduced-motion:reduce){.stage-lights i,.mascot-girl img,.mascot-boy img,.cloud-transition-ornament{animation:none!important}}
