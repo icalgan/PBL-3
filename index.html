@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=15">
+  <link rel="stylesheet" href="style.css?v=16">
 
   <style>
     .recreate-sparkle{position:fixed!important;left:0;top:0;width:22px;height:22px;z-index:2147483647;pointer-events:none;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(232,105,165,.65));}
@@ -49,15 +49,37 @@
 
 
 
-    <section class="cloud-transition" id="cloud-transition" aria-label="Transisi awan dari konser ke RE:CREATE">
-      <div class="cloud-horizon" aria-hidden="true">
-        <span class="cloud-layer cloud-back"></span>
-        <span class="cloud-layer cloud-front"></span>
-        <span class="cloud-sun"></span>
-      </div>
-<div class="cloud-transition-stars" aria-hidden="true">✦　✧　✦　✧　✦</div>
+    <section class="cloud-transition" id="cloud-transition" aria-label="Transisi awan dari panggung konser ke RE:CREATE">
+      <svg class="cloudscape" viewBox="0 0 1440 520" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="cloudTopFill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fffafd"/>
+            <stop offset=".66" stop-color="#fdf5fc"/>
+            <stop offset="1" stop-color="#e9e8fa"/>
+          </linearGradient>
+          <linearGradient id="cloudBottomFill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fffafd"/>
+            <stop offset=".45" stop-color="#f9eafa"/>
+            <stop offset="1" stop-color="#dceafa"/>
+          </linearGradient>
+          <linearGradient id="cloudHighlight" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#c9e8fb"/>
+            <stop offset=".5" stop-color="#fff"/>
+            <stop offset="1" stop-color="#f9cfe7"/>
+          </linearGradient>
+          <filter id="cloudSoftShadow" x="-10%" y="-15%" width="120%" height="140%">
+            <feGaussianBlur stdDeviation="10"/>
+          </filter>
+        </defs>
+        <path class="cloud-shadow-top" d="M0 0H1440V152C1384 126 1372 180 1325 176C1273 173 1260 118 1207 124C1150 130 1148 180 1090 178C1034 176 1026 115 968 119C912 123 910 177 854 176C798 175 785 115 731 117C676 119 660 181 605 177C548 173 540 117 486 120C432 123 420 174 363 166C307 158 298 111 250 113C197 115 185 166 133 162C80 158 62 124 0 145Z" fill="#b9b6df" opacity=".5" filter="url(#cloudSoftShadow)"/>
+        <path d="M0 0H1440V135C1380 109 1372 163 1320 160C1267 157 1257 104 1206 109C1153 114 1145 162 1090 160C1034 158 1025 101 968 105C914 109 908 160 853 158C798 156 783 99 731 102C678 105 660 164 605 161C550 158 538 101 486 105C433 109 421 158 364 152C306 146 298 94 250 98C198 102 186 153 133 150C80 147 60 109 0 130Z" fill="url(#cloudTopFill)"/>
+        <path d="M0 128C65 115 83 148 132 149C185 151 197 106 250 102C300 98 306 149 364 154C421 159 434 109 486 107C540 105 550 158 605 163C660 167 678 109 731 105C783 101 798 158 853 160C908 162 914 113 968 109C1025 105 1034 160 1090 162C1145 164 1153 119 1206 113C1257 107 1267 160 1320 163C1372 166 1380 120 1440 140" fill="none" stroke="url(#cloudHighlight)" stroke-width="12" opacity=".85"/>
+        <path d="M0 378C56 352 67 418 122 415C178 412 184 365 242 369C301 373 299 432 360 432C421 432 435 371 495 375C556 379 557 436 618 436C680 436 692 370 751 371C814 372 827 430 889 426C950 422 955 368 1016 369C1079 370 1084 432 1147 433C1210 434 1226 372 1290 374C1354 376 1370 424 1440 397V520H0Z" fill="url(#cloudBottomFill)"/>
+        <path d="M0 382C56 357 67 422 122 419C178 416 184 370 242 374C301 378 299 437 360 437C421 437 435 376 495 380C556 384 557 441 618 441C680 441 692 375 751 376C814 377 827 435 889 431C950 427 955 373 1016 374C1079 375 1084 437 1147 438C1210 439 1226 377 1290 379C1354 381 1370 429 1440 402" fill="none" stroke="url(#cloudHighlight)" stroke-width="13" opacity=".88"/>
+        <path d="M0 468C90 438 122 493 205 482C290 470 312 450 390 473C475 498 508 454 590 465C680 477 717 497 800 475C884 453 925 484 1000 476C1090 467 1133 445 1210 472C1300 503 1360 461 1440 463V520H0Z" fill="#d6e7f8" opacity=".45"/>
+      </svg>
+      <div class="cloud-transition-stars" aria-hidden="true">✦　✧　✦　✧　✦</div>
       <div class="cloud-transition-arrow" aria-hidden="true">⌄</div>
-      <div class="cloud-floor-glow" aria-hidden="true"></div>
     </section>
     <section class="brand-intro-section" id="brand-intro">
       <div class="brand-intro-stars" aria-hidden="true">✦　✧　✦　✧　✦</div>
