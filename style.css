@@ -997,3 +997,81 @@ body{background:#fffafd;color:var(--ink)}
   .cloud-transition-stars{top:48%!important}
   .cloud-transition-arrow{bottom:6%!important}
 }
+
+
+/* MATCH THE REFERENCE: use the user's actual pink-blue wave artwork as one huge cloud band */
+.cloud-transition{
+  position:relative!important;
+  display:block!important;
+  isolation:isolate!important;
+  width:100%!important;
+  height:clamp(130px,15.85vw,317px)!important;
+  min-height:130px!important;
+  margin:0!important;
+  padding:0!important;
+  overflow:hidden!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  background:linear-gradient(180deg,#eee8f7 0%,#fff8fc 58%,#e9f1fc 100%)!important;
+}
+.cloud-transition .cloudscape-image{
+  display:block!important;
+  position:absolute!important;
+  z-index:3!important;
+  width:120%!important;
+  max-width:none!important;
+  height:clamp(336px,41vw,820px)!important;
+  left:-10%!important;
+  top:-11.2%!important;
+  right:auto!important;
+  bottom:auto!important;
+  object-fit:fill!important;
+  opacity:1!important;
+  filter:none!important;
+  mix-blend-mode:normal!important;
+  pointer-events:none!important;
+}
+.cloud-transition:before,.cloud-transition:after,
+.cloud-transition .cloud-horizon,.cloud-transition-stars{
+  display:none!important;
+  content:none!important;
+}
+.cloud-transition-arrow{
+  z-index:5!important;
+  bottom:3%!important;
+  width:32px!important;
+  height:32px!important;
+  font-size:22px!important;
+  background:#ffffffda!important;
+}
+.brand-intro-section{
+  margin-top:0!important;
+  position:relative!important;
+  z-index:1!important;
+}
+@media(max-width:800px){
+  .cloud-transition{
+    height:clamp(130px,18vw,210px)!important;
+    min-height:130px!important;
+  }
+  .cloud-transition .cloudscape-image{
+    width:120%!important;
+    height:clamp(336px,46.5vw,520px)!important;
+    left:-10%!important;
+    top:-11.2%!important;
+  }
+}
+@media(max-width:560px){
+  .cloud-transition{
+    height:clamp(130px,28.6vw,165px)!important;
+    min-height:130px!important;
+  }
+  .cloud-transition .cloudscape-image{
+    width:120%!important;
+    height:336px!important;
+    left:-10%!important;
+    top:-11.2%!important;
+  }
+  .cloud-transition-arrow{bottom:1%!important;width:27px!important;height:27px!important}
+}
