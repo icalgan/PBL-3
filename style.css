@@ -1145,7 +1145,7 @@ body{background:#fffafd;color:var(--ink)}
   height:100%!important;
   object-fit:fill!important;
   opacity:1!important;
-  transform:translate3d(0,var(--cloud-drift),0) scale(1.015)!important;
+  transform:translate3d(0,var(--cloud-drift),0) scale(calc(1.015 + var(--cloud-progress)*.045))!important;
   transform-origin:center center;
   filter:saturate(.92) brightness(1.04)!important;
   will-change:transform;
