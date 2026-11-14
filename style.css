@@ -1794,3 +1794,64 @@ body{background:#fffafd;color:var(--ink)}
   .cloud-back-art{width:214vw!important;left:-57vw!important;height:114vh!important;top:-7vh!important}
   .cloud-front-art{width:244vw!important;left:-72vw!important;height:132vh!important;top:-16vh!important}
 }
+
+
+/* CLOUD FIX V2: use the two original transparent PNG assets directly.
+   Parent gradients are soft cloud mist; the PNG artwork is the visible cloud crest. */
+.scene-cloud-back{
+  z-index:4!important;
+  inset:0!important;
+  overflow:hidden!important;
+  background:
+    radial-gradient(ellipse at 15% 18%,#f8e5f4 0%,transparent 48%),
+    radial-gradient(ellipse at 85% 24%,#d9eafb 0%,transparent 50%),
+    linear-gradient(180deg,#f6eef9 0%,#f7edf7 54%,#dceafa 100%)!important;
+  border-radius:0!important;
+  transform:translate3d(0,var(--cloud-back-y,110vh),0)!important;
+}
+.scene-cloud-front{
+  z-index:5!important;
+  inset:0!important;
+  overflow:hidden!important;
+  background:
+    radial-gradient(ellipse at 12% 22%,#fbe3f1 0%,transparent 48%),
+    radial-gradient(ellipse at 88% 20%,#d6e9fb 0%,transparent 50%),
+    linear-gradient(180deg,#fff4fa 0%,#f7eaf6 52%,#d7e9fa 100%)!important;
+  border-radius:0!important;
+  transform:translate3d(0,var(--cloud-front-y,115vh),0)!important;
+}
+.cloud-back-art,.cloud-front-art{
+  position:absolute!important;
+  display:block!important;
+  max-width:none!important;
+  opacity:1!important;
+  object-fit:cover!important;
+  object-position:center 12%!important;
+  pointer-events:none!important;
+  mix-blend-mode:normal!important;
+  animation:none!important;
+}
+.cloud-back-art{
+  z-index:1!important;
+  width:116vw!important;
+  height:112vh!important;
+  left:-8vw!important;
+  top:-6vh!important;
+  filter:saturate(.9) brightness(1.03) drop-shadow(0 18px 28px #8a87b333)!important;
+}
+.cloud-front-art{
+  z-index:1!important;
+  width:136vw!important;
+  height:128vh!important;
+  left:-18vw!important;
+  top:-12vh!important;
+  filter:saturate(.86) brightness(1.05) drop-shadow(0 22px 34px #837ba944)!important;
+}
+@media(max-width:800px){
+  .cloud-back-art{width:126vw!important;height:110vh!important;left:-13vw!important;top:-5vh!important}
+  .cloud-front-art{width:148vw!important;height:124vh!important;left:-24vw!important;top:-10vh!important}
+}
+@media(max-width:560px){
+  .cloud-back-art{width:150vw!important;height:100vh!important;left:-25vw!important;top:0!important;object-position:center 10%!important}
+  .cloud-front-art{width:174vw!important;height:112vh!important;left:-37vw!important;top:-6vh!important;object-position:center 10%!important}
+}
