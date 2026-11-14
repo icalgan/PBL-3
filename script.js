@@ -126,9 +126,10 @@
   window.addEventListener('load', updateScenes, { once: true });
 
   // Pointer spotlight and performer depth response.
-  if (hero && finePointer && !reduceMotion) {
-    hero.addEventListener('pointermove', event => {
-      const rect = hero.getBoundingClientRect();
+  const pointerScene = hero ? (hero.querySelector('.concert-sticky-scene') || hero) : null;
+  if (pointerScene && finePointer && !reduceMotion) {
+    pointerScene.addEventListener('pointermove', event => {
+      const rect = pointerScene.getBoundingClientRect();
       const x = (event.clientX - rect.left) / rect.width;
       const y = (event.clientY - rect.top) / rect.height;
       hero.style.setProperty('--mouse-x', (x * 100).toFixed(1) + '%');
@@ -138,7 +139,7 @@
       const duo = hero.querySelector('.concert-duo');
       if (duo) duo.style.marginLeft = ((x - .5) * 18).toFixed(1) + 'px';
     }, { passive: true });
-    hero.addEventListener('pointerleave', () => {
+    pointerScene.addEventListener('pointerleave', () => {
       hero.style.setProperty('--mouse-x', '50%');
       hero.style.setProperty('--mouse-y', '42%');
       hero.style.setProperty('--duo-x', '0px');
