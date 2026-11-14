@@ -64,11 +64,11 @@
   }
 
   const hero = document.querySelector('.hero-concert');
-  const cloud = document.querySelector('.cloud-transition');
   const after = document.querySelector('.after-concert-section');
   let ticking = false;
 
-  // Three-layer sticky concert scene: different parallax speeds create overlap.
+  // Five visual layers are staged on one sticky timeline:
+  // stage -> performers -> audience -> back cloud -> larger front cloud.
   const updateScenes = () => {
     const vh = window.innerHeight || 1;
 
@@ -78,23 +78,30 @@
       const rect = hero.getBoundingClientRect();
       const progress = clamp(-rect.top / travel, 0, 1);
 
+      // First sequence: the audience rises, followed by the performers and stage.
+      const concertReveal = clamp(progress / .27, 0, 1);
       hero.style.setProperty('--scene-progress', progress.toFixed(3));
-      hero.style.setProperty('--back-scroll', (-progress * vh * .10).toFixed(1) + 'px');
-      hero.style.setProperty('--middle-scroll', (-progress * vh * .26).toFixed(1) + 'px');
-      // The foreground audience rises faster and progressively covers the performers.
-      hero.style.setProperty('--front-scroll', (-progress * vh * .88).toFixed(1) + 'px');
+      hero.style.setProperty('--back-scroll', (-concertReveal * vh * .08).toFixed(1) + 'px');
+      hero.style.setProperty('--middle-scroll', (-concertReveal * vh * .22).toFixed(1) + 'px');
+      hero.style.setProperty('--front-scroll', (-concertReveal * vh * .86).toFixed(1) + 'px');
+
+      // Cloud back starts rising while the concert layers are moving away.
+      const backPhase = clamp((progress - .18) / .42, 0, 1);
+      const cloudBack = hero.querySelector('.scene-cloud-back');
+      if (cloudBack) {
+        cloudBack.style.setProperty('--cloud-back-y', ((1 - backPhase) * vh * 1.12).toFixed(1) + 'px');
+      }
+
+      // Larger cloud front rises later, overlaps the back cloud and fully covers it.
+      const frontPhase = clamp((progress - .49) / .41, 0, 1);
+      const cloudFront = hero.querySelector('.scene-cloud-front');
+      if (cloudFront) {
+        cloudFront.style.setProperty('--cloud-front-y', ((1 - frontPhase) * vh * 1.2).toFixed(1) + 'px');
+      }
+
       hero.style.setProperty('--scene-caption-opacity', clamp(progress * 2, 0, 1).toFixed(3));
-
       const cue = hero.querySelector('.hero-scroll-cue');
-      if (cue) cue.style.opacity = String(clamp(1 - progress * 2.2, 0, 1));
-    }
-
-    if (cloud) {
-      const rect = cloud.getBoundingClientRect();
-      const progress = clamp((vh - rect.top) / (vh + rect.height), 0, 1);
-      cloud.style.setProperty('--cloud-y', ((.5 - progress) * 34).toFixed(1) + 'px');
-      cloud.style.setProperty('--cloud-scale', (1.06 + progress * .035).toFixed(3));
-      cloud.style.setProperty('--cloud-pos', (21 + progress * 7).toFixed(1) + '%');
+      if (cue) cue.style.opacity = String(clamp(1 - progress * 2.8, 0, 1));
     }
 
     if (after) {
@@ -106,18 +113,17 @@
   };
 
   const onScroll = () => {
-    if (reduceMotion || ticking) return;
+    if (ticking) return;
     ticking = true;
     window.requestAnimationFrame(updateScenes);
   };
 
-  if (!reduceMotion) {
-    updateScenes();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', updateScenes, { passive: true });
-    window.addEventListener('load', updateScenes, { once: true });
-  }
-
+  // Scroll choreography remains available for this interaction; reduced-motion
+  // only disables the continuous floating/bobbing animations in CSS.
+  updateScenes();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', updateScenes, { passive: true });
+  window.addEventListener('load', updateScenes, { once: true });
 
   // Pointer spotlight and performer depth response.
   if (hero && finePointer && !reduceMotion) {
