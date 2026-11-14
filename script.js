@@ -77,8 +77,7 @@
 
     if (hero) {
       const rect = hero.getBoundingClientRect();
-      const progress = clamp((vh - rect.top) / (vh + rect.height), 0, 1);
-      const travel = clamp(y - (rect.top + y), 0, rect.height + vh);
+      const progress = clamp(-rect.top / rect.height, 0, 1);
       hero.style.setProperty('--hero-scroll', (progress * 165).toFixed(1) + 'px');
       hero.style.setProperty('--hero-progress', progress.toFixed(3));
     }
