@@ -2090,3 +2090,45 @@ body{background:#fffafd;color:var(--ink)}
     animation:none!important;
   }
 }
+
+
+/* CROWD FOREGROUND — fill the entire browser width, edge to edge */
+.hero-concert .scene-layer-front{
+  left:0!important;
+  right:0!important;
+  width:100%!important;
+  overflow:visible!important;
+}
+.hero-concert .concert-crowd{
+  position:absolute!important;
+  display:block!important;
+  top:0!important;
+  bottom:0!important;
+  left:50%!important;
+  width:100vw!important;
+  max-width:none!important;
+  height:100%!important;
+  margin-left:-50vw!important;
+  object-fit:cover!important;
+  object-position:center bottom!important;
+  opacity:1!important;
+  visibility:visible!important;
+  filter:drop-shadow(0 -8px 18px #36305e42)!important;
+}
+/* Responsive: retain full-bleed width on narrow screens as well. */
+@media(max-width:800px){
+  .hero-concert .concert-crowd{
+    width:100vw!important;
+    margin-left:-50vw!important;
+    object-fit:cover!important;
+    object-position:center bottom!important;
+  }
+}
+@media(max-width:560px){
+  .hero-concert .concert-crowd{
+    width:100vw!important;
+    margin-left:-50vw!important;
+    object-fit:cover!important;
+    object-position:center bottom!important;
+  }
+}
