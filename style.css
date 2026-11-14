@@ -1408,3 +1408,194 @@ body{background:#fffafd;color:var(--ink)}
     animation:none!important;
   }
 }
+
+
+/* ============================================================
+   THREE-LAYER STICKY CONCERT SCENE
+   1. Empty stage/background
+   2. Performer duo
+   3. Audience/crowd foreground
+   Scroll lifts the foreground over the performers and stage.
+   ============================================================ */
+.hero-concert.scene-scroll-track{
+  position:relative!important;
+  display:block!important;
+  width:100%!important;
+  height:220svh!important;
+  min-height:1800px!important;
+  margin-top:0!important;
+  padding:0!important;
+  overflow:visible!important;
+  isolation:isolate!important;
+  background:#8d82bb!important;
+}
+.concert-sticky-scene{
+  position:sticky!important;
+  top:0!important;
+  width:100%!important;
+  height:100svh!important;
+  min-height:560px!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+  background:#847ab6!important;
+}
+.scene-layer{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  pointer-events:none!important;
+  will-change:transform;
+}
+.scene-layer-back{
+  z-index:0!important;
+  transform:translate3d(0,var(--back-scroll,0px),0)!important;
+}
+.concert-stage-bg{
+  position:absolute!important;
+  inset:-4%!important;
+  width:108%!important;
+  height:108%!important;
+  display:block!important;
+  object-fit:cover!important;
+  object-position:center 40%!important;
+  z-index:auto!important;
+  filter:saturate(.91) brightness(1.03)!important;
+  animation:stageFloat 8.5s ease-in-out infinite!important;
+  will-change:transform;
+}
+.concert-layer-wash{
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  pointer-events:none!important;
+  background:
+    linear-gradient(180deg,#625e9940 0%,transparent 22%,transparent 63%,#6b5d9b35 100%),
+    radial-gradient(ellipse at 50% 38%,transparent 34%,#3e3c6e35 100%)!important;
+}
+.scene-layer-middle{
+  z-index:2!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  transform:translate3d(0,var(--middle-scroll,0px),0)!important;
+}
+.concert-duo{
+  position:absolute!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  inset:0!important;
+  max-width:none!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  filter:drop-shadow(0 20px 24px #3c315b2b)!important;
+  animation:performerFloat 4.7s ease-in-out infinite!important;
+  transform-origin:50% 58%!important;
+  will-change:transform;
+  pointer-events:none!important;
+}
+.scene-layer-front{
+  z-index:3!important;
+  top:auto!important;
+  bottom:-5vh!important;
+  height:76vh!important;
+  transform:translate3d(0,var(--front-scroll,0px),0)!important;
+  transform-origin:center bottom!important;
+}
+.concert-crowd{
+  position:absolute!important;
+  display:block!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:fill!important;
+  object-position:center bottom!important;
+  filter:drop-shadow(0 -8px 18px #36305e42)!important;
+  animation:crowdFloat 5.4s ease-in-out infinite!important;
+  transform-origin:center bottom!important;
+  will-change:transform;
+}
+.hero-scroll-cue{
+  z-index:6!important;
+  position:absolute!important;
+  left:50%!important;
+  bottom:22px!important;
+  transform:translateX(-50%)!important;
+  color:#fff!important;
+  text-shadow:0 2px 10px #38345f!important;
+  transition:opacity .25s ease;
+}
+.hero-scroll-cue b{
+  display:inline-block;
+  animation:cueBounce 1.5s ease-in-out infinite!important;
+}
+.scene-progress-caption{
+  position:absolute!important;
+  z-index:6!important;
+  left:50%!important;
+  bottom:9px!important;
+  transform:translateX(-50%)!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:9px!important;
+  color:#fff!important;
+  font:800 7px/1 "DM Sans",sans-serif!important;
+  letter-spacing:1.6px!important;
+  white-space:nowrap!important;
+  opacity:var(--scene-caption-opacity,0)!important;
+  pointer-events:none!important;
+}
+.scene-progress-caption i{
+  display:block!important;
+  width:clamp(42px,7vw,92px)!important;
+  height:2px!important;
+  background:linear-gradient(90deg,#b9e5fb,#fff,#f3a8d2)!important;
+  border-radius:4px!important;
+}
+@keyframes stageFloat{
+  0%,100%{transform:translate3d(0,0,0) scale(1.045)}
+  50%{transform:translate3d(0,-8px,0) scale(1.055)}
+}
+@keyframes performerFloat{
+  0%,100%{translate:0 0;rotate:-.25deg}
+  50%{translate:0 -17px;rotate:.35deg}
+}
+@keyframes crowdFloat{
+  0%,100%{translate:0 0}
+  50%{translate:0 -11px}
+}
+@keyframes cueBounce{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(7px)}
+}
+@media(max-width:800px){
+  .hero-concert.scene-scroll-track{
+    height:205svh!important;
+    min-height:1450px!important;
+  }
+  .concert-sticky-scene{min-height:520px!important}
+  .scene-layer-front{height:69vh!important;bottom:-4vh!important}
+  .concert-duo{object-fit:contain!important}
+  .scene-progress-caption{font-size:6px!important}
+}
+@media(max-width:560px){
+  .hero-concert.scene-scroll-track{
+    height:195svh!important;
+    min-height:1320px!important;
+  }
+  .concert-sticky-scene{min-height:500px!important}
+  .concert-stage-bg{object-position:center center!important}
+  .concert-duo{width:118%!important;max-width:none!important;left:-9%!important}
+  .scene-layer-front{height:60vh!important;bottom:-3vh!important}
+  .hero-scroll-cue{bottom:15px!important}
+  .scene-progress-caption{bottom:5px!important;letter-spacing:1px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .concert-stage-bg,.concert-duo,.concert-crowd,.hero-scroll-cue b{
+    animation:none!important;
+  }
+  .scene-layer-back,.scene-layer-middle,.scene-layer-front{
+    transform:none!important;
+  }
+}
