@@ -1756,3 +1756,41 @@ body{background:#fffafd;color:var(--ink)}
 @media(prefers-reduced-motion:reduce){
   .cloud-back-art,.cloud-front-art{animation:none!important}
 }
+
+
+/* Cloud layers should already be visible during the mid-scroll view shown in the user's screenshot. */
+.hero-concert.scene-scroll-track{
+  height:310svh!important;
+  min-height:310svh!important;
+}
+.scene-cloud-back{
+  transform:translate3d(0,var(--cloud-back-y,30vh),0)!important;
+  background:linear-gradient(165deg,#f8edf7 0%,#f9f0fb 45%,#e0edfb 100%)!important;
+}
+.cloud-back-art{
+  width:160vw!important;
+  height:138vh!important;
+  left:-30vw!important;
+  top:-16vh!important;
+}
+.scene-cloud-front{
+  transform:translate3d(0,var(--cloud-front-y,48vh),0)!important;
+  background:linear-gradient(150deg,#fff0f7 0%,#f7eafa 43%,#d9eafa 100%)!important;
+}
+.cloud-front-art{
+  width:188vw!important;
+  height:158vh!important;
+  left:-44vw!important;
+  top:-25vh!important;
+  filter:saturate(.84) brightness(1.06) drop-shadow(0 24px 34px #7988c144)!important;
+}
+@media(max-width:800px){
+  .hero-concert.scene-scroll-track{height:290svh!important;min-height:290svh!important}
+  .cloud-back-art{width:176vw!important;left:-38vw!important;height:128vh!important;top:-14vh!important}
+  .cloud-front-art{width:206vw!important;left:-53vw!important;height:148vh!important;top:-22vh!important}
+}
+@media(max-width:560px){
+  .hero-concert.scene-scroll-track{height:275svh!important;min-height:275svh!important}
+  .cloud-back-art{width:214vw!important;left:-57vw!important;height:114vh!important;top:-7vh!important}
+  .cloud-front-art{width:244vw!important;left:-72vw!important;height:132vh!important;top:-16vh!important}
+}
