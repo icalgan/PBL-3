@@ -2132,3 +2132,222 @@ body{background:#fffafd;color:var(--ink)}
     object-position:center bottom!important;
   }
 }
+
+
+/* =========================================================
+   DEFINITIVE FIVE-LAYER CONCERT STACK
+   1 Stage / 2 transparent idol duo / 3 full-bleed crowd
+   4 back cloud / 5 front cloud
+   ========================================================= */
+.hero-concert .concert-sticky-scene{
+  position:sticky!important;
+  top:0!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+  background:transparent!important;
+}
+.hero-concert .scene-layer-back{
+  position:absolute!important;
+  inset:0!important;
+  z-index:0!important;
+  background:transparent!important;
+}
+.hero-concert .concert-stage-bg{
+  background:transparent!important;
+  opacity:1!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+}
+
+/* Layer 2: image itself stays transparent; no black panel or blend mode. */
+.hero-concert .scene-layer-middle{
+  position:absolute!important;
+  inset:0!important;
+  z-index:2!important;
+  background:transparent!important;
+  background-color:transparent!important;
+  isolation:auto!important;
+}
+.hero-concert .concert-duo{
+  display:block!important;
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  background:transparent!important;
+  background-color:transparent!important;
+  mix-blend-mode:normal!important;
+  opacity:1!important;
+  visibility:visible!important;
+  filter:drop-shadow(0 14px 18px #40335a1c)!important;
+  pointer-events:none!important;
+}
+
+/* Layer 3: preserve the wide panoramic crowd art and bleed past both edges. */
+.hero-concert .scene-layer-front{
+  position:absolute!important;
+  z-index:3!important;
+  left:0!important;
+  right:0!important;
+  top:auto!important;
+  bottom:-1vh!important;
+  width:100vw!important;
+  height:calc(118vw / 3)!important;
+  overflow:visible!important;
+  transform:translate3d(0,var(--front-scroll,0px),0)!important;
+  transform-origin:center bottom!important;
+  background:transparent!important;
+}
+.hero-concert .concert-crowd{
+  display:block!important;
+  position:absolute!important;
+  top:auto!important;
+  bottom:0!important;
+  left:50%!important;
+  width:118vw!important;
+  height:auto!important;
+  max-width:none!important;
+  max-height:none!important;
+  margin-left:-59vw!important;
+  object-fit:contain!important;
+  object-position:center bottom!important;
+  background:transparent!important;
+  background-color:transparent!important;
+  mix-blend-mode:normal!important;
+  opacity:1!important;
+  visibility:visible!important;
+  filter:drop-shadow(0 -7px 15px #38305f30)!important;
+  pointer-events:none!important;
+}
+
+/* Clouds are transparent PNG overlays, stacked directly above the audience. */
+.hero-concert .scene-cloud-back{
+  position:absolute!important;
+  inset:0!important;
+  z-index:4!important;
+  overflow:hidden!important;
+  background:transparent!important;
+  background-color:transparent!important;
+  background-image:none!important;
+  border:0!important;
+  box-shadow:none!important;
+  transform:translate3d(0,var(--cloud-back-y,110vh),0)!important;
+  will-change:transform;
+}
+.hero-concert .cloud-back-art{
+  position:absolute!important;
+  display:block!important;
+  width:178vw!important;
+  height:190vh!important;
+  left:-39vw!important;
+  top:-45vh!important;
+  max-width:none!important;
+  object-fit:cover!important;
+  object-position:center 5%!important;
+  background:transparent!important;
+  mix-blend-mode:normal!important;
+  opacity:1!important;
+  visibility:visible!important;
+  filter:drop-shadow(0 18px 25px #6d6a9830)!important;
+  pointer-events:none!important;
+}
+.hero-concert .scene-cloud-front{
+  position:absolute!important;
+  inset:0!important;
+  z-index:5!important;
+  overflow:hidden!important;
+  background:transparent!important;
+  background-color:transparent!important;
+  background-image:none!important;
+  border:0!important;
+  box-shadow:none!important;
+  transform:translate3d(0,var(--cloud-front-y,115vh),0)!important;
+  will-change:transform;
+}
+.hero-concert .cloud-front-art{
+  position:absolute!important;
+  display:block!important;
+  width:238vw!important;
+  height:250vh!important;
+  left:-69vw!important;
+  top:-65vh!important;
+  max-width:none!important;
+  object-fit:cover!important;
+  object-position:center 5%!important;
+  background:transparent!important;
+  mix-blend-mode:normal!important;
+  opacity:1!important;
+  visibility:visible!important;
+  filter:drop-shadow(0 22px 30px #6d6a9840)!important;
+  pointer-events:none!important;
+}
+
+/* Remove any leftover wash/pseudo layers that could tint the idol cutout. */
+.hero-concert .concert-layer-wash,
+.hero-concert .concert-sticky-scene::before,
+.hero-concert .concert-sticky-scene::after{
+  display:none!important;
+  content:none!important;
+  background:none!important;
+  opacity:0!important;
+}
+.hero-concert .scene-cloud-back::before,
+.hero-concert .scene-cloud-back::after,
+.hero-concert .scene-cloud-front::before,
+.hero-concert .scene-cloud-front::after{
+  display:none!important;
+  content:none!important;
+  background:none!important;
+  opacity:0!important;
+}
+
+@media(max-width:800px){
+  .hero-concert .scene-layer-front{
+    height:calc(145vw / 3)!important;
+  }
+  .hero-concert .concert-crowd{
+    width:145vw!important;
+    margin-left:-72.5vw!important;
+  }
+  .hero-concert .cloud-back-art{
+    width:192vw!important;height:205vh!important;
+    left:-46vw!important;top:-48vh!important;
+  }
+  .hero-concert .cloud-front-art{
+    width:260vw!important;height:270vh!important;
+    left:-80vw!important;top:-72vh!important;
+  }
+}
+@media(max-width:560px){
+  .hero-concert .scene-layer-front{
+    height:calc(165vw / 3)!important;
+  }
+  .hero-concert .concert-crowd{
+    width:165vw!important;
+    margin-left:-82.5vw!important;
+  }
+  .hero-concert .concert-duo{
+    width:118%!important;
+    left:-9%!important;
+  }
+  .hero-concert .cloud-back-art{
+    width:220vw!important;height:170vh!important;
+    left:-60vw!important;top:-35vh!important;
+  }
+  .hero-concert .cloud-front-art{
+    width:290vw!important;height:220vh!important;
+    left:-95vw!important;top:-55vh!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-concert .concert-duo,
+  .hero-concert .concert-crowd,
+  .hero-concert .cloud-back-art,
+  .hero-concert .cloud-front-art{
+    animation:none!important;
+  }
+}
