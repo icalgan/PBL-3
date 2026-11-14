@@ -1,6 +1,7 @@
 (() => {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const finePointer = window.matchMedia('(pointer: fine)').matches;
+  const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
   // Mobile navigation
   const toggle = document.querySelector('.menu-toggle');
@@ -19,7 +20,7 @@
     }));
   }
 
-  // Reveal editorial content as each scene enters the viewport.
+  // Reveal content as the reader moves through the story.
   const revealItems = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window && !reduceMotion) {
     const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -41,13 +42,13 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) brandSection.classList.add('in-frame');
       });
-    }, { threshold: 0.18 });
+    }, { threshold: 0.2 });
     brandObserver.observe(brandSection);
   } else if (brandSection) {
-    brandSection.classList.add('in-frame');
+    brandSection?.classList.add('in-frame');
   }
 
-  // Active navigation follows the section currently being read.
+  // Active navigation follows the section currently in view.
   const sections = [...document.querySelectorAll('main section[id]')];
   const navLinks = [...document.querySelectorAll('.main-nav a')];
   if ('IntersectionObserver' in window) {
@@ -55,8 +56,7 @@
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
         navLinks.forEach(link => {
-          const href = link.getAttribute('href');
-          link.classList.toggle('active', href === '#' + entry.target.id);
+          link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
         });
       });
     }, { rootMargin: '-38% 0px -52% 0px' });
@@ -68,31 +68,32 @@
   const after = document.querySelector('.after-concert-section');
   let ticking = false;
 
-  // Firewatch-inspired parallax: far background, performers, crowd and cloud
-  // move at different rates to create a layered sense of depth.
-  const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
-  const updateScrollScenes = () => {
+  // Layered parallax: backdrop, stage lights, artists and audience have
+  // different travel speeds to create depth while scrolling.
+  const updateScenes = () => {
     const vh = window.innerHeight || 1;
-    const y = window.scrollY || window.pageYOffset;
 
     if (hero) {
       const rect = hero.getBoundingClientRect();
-      const progress = clamp(-rect.top / rect.height, 0, 1);
-      hero.style.setProperty('--hero-scroll', (progress * 165).toFixed(1) + 'px');
-      hero.style.setProperty('--hero-progress', progress.toFixed(3));
+      const progress = clamp(-rect.top / Math.max(rect.height, 1), 0, 1);
+      hero.style.setProperty('--background-y', (-progress * 54).toFixed(1) + 'px');
+      hero.style.setProperty('--lights-y', (-progress * 78).toFixed(1) + 'px');
+      hero.style.setProperty('--performers-y', (-progress * 108).toFixed(1) + 'px');
+      hero.style.setProperty('--crowd-y', (-progress * 148).toFixed(1) + 'px');
     }
 
     if (cloud) {
       const rect = cloud.getBoundingClientRect();
       const progress = clamp((vh - rect.top) / (vh + rect.height), 0, 1);
-      cloud.style.setProperty('--cloud-progress', progress.toFixed(3));
-      cloud.style.setProperty('--cloud-drift', ((progress - .5) * -34).toFixed(1) + 'px');
+      cloud.style.setProperty('--cloud-y', ((.5 - progress) * 34).toFixed(1) + 'px');
+      cloud.style.setProperty('--cloud-scale', (1.06 + progress * .035).toFixed(3));
+      cloud.style.setProperty('--cloud-pos', (21 + progress * 7).toFixed(1) + '%');
     }
 
     if (after) {
       const rect = after.getBoundingClientRect();
       const progress = clamp((vh - rect.top) / (vh + rect.height), 0, 1);
-      after.style.setProperty('--waste-drift', ((.5 - progress) * 28).toFixed(1) + 'px');
+      after.style.setProperty('--waste-drift', ((.5 - progress) * 24).toFixed(1) + 'px');
     }
     ticking = false;
   };
@@ -100,38 +101,44 @@
   const onScroll = () => {
     if (reduceMotion || ticking) return;
     ticking = true;
-    window.requestAnimationFrame(updateScrollScenes);
+    window.requestAnimationFrame(updateScenes);
   };
+
   if (!reduceMotion) {
-    updateScrollScenes();
+    updateScenes();
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', updateScrollScenes, { passive: true });
+    window.addEventListener('resize', updateScenes, { passive: true });
+    window.addEventListener('load', updateScenes, { once: true });
   }
 
-  // Dogstudio-inspired subtle pointer response for the central concert artwork.
+  // Pointer spotlight and performer depth response.
   if (hero && finePointer && !reduceMotion) {
     hero.addEventListener('pointermove', event => {
       const rect = hero.getBoundingClientRect();
-      const x = (event.clientX - rect.left) / rect.width - .5;
-      const y = (event.clientY - rect.top) / rect.height - .5;
-      hero.style.setProperty('--pointer-x', (x * 18).toFixed(1) + 'px');
-      hero.style.setProperty('--pointer-y', (y * 12).toFixed(1) + 'px');
+      const x = (event.clientX - rect.left) / rect.width;
+      const y = (event.clientY - rect.top) / rect.height;
+      hero.style.setProperty('--mouse-x', (x * 100).toFixed(1) + '%');
+      hero.style.setProperty('--mouse-y', (y * 100).toFixed(1) + '%');
+      hero.style.setProperty('--duo-x', ((x - .5) * 15).toFixed(1) + 'px');
+      hero.style.setProperty('--duo-y', ((y - .5) * 11).toFixed(1) + 'px');
     }, { passive: true });
     hero.addEventListener('pointerleave', () => {
-      hero.style.setProperty('--pointer-x', '0px');
-      hero.style.setProperty('--pointer-y', '0px');
+      hero.style.setProperty('--mouse-x', '50%');
+      hero.style.setProperty('--mouse-y', '42%');
+      hero.style.setProperty('--duo-x', '0px');
+      hero.style.setProperty('--duo-y', '0px');
     }, { passive: true });
   }
 
-  // Small card tilt: restrained, only on mouse/trackpad layouts.
+  // Restrained tilt on the DIY cards, only where a mouse/trackpad is available.
   if (finePointer && !reduceMotion) {
     document.querySelectorAll('.idea-card').forEach(card => {
       card.addEventListener('pointermove', event => {
         const rect = card.getBoundingClientRect();
         const x = (event.clientX - rect.left) / rect.width - .5;
         const y = (event.clientY - rect.top) / rect.height - .5;
-        card.style.setProperty('--card-rx', (-y * 2.2).toFixed(2) + 'deg');
-        card.style.setProperty('--card-ry', (x * 2.2).toFixed(2) + 'deg');
+        card.style.setProperty('--card-rx', (-y * 2.4).toFixed(2) + 'deg');
+        card.style.setProperty('--card-ry', (x * 2.4).toFixed(2) + 'deg');
       }, { passive: true });
       card.addEventListener('pointerleave', () => {
         card.style.setProperty('--card-rx', '0deg');
@@ -139,7 +146,4 @@
       }, { passive: true });
     });
   }
-
-  // Ensure scroll values are correct after fonts and images settle.
-  window.addEventListener('load', updateScrollScenes, { once: true });
 })();
