@@ -1855,3 +1855,52 @@ body{background:#fffafd;color:var(--ink)}
   .cloud-back-art{width:150vw!important;height:100vh!important;left:-25vw!important;top:0!important;object-position:center 10%!important}
   .cloud-front-art{width:174vw!important;height:112vh!important;left:-37vw!important;top:-6vh!important;object-position:center 10%!important}
 }
+
+
+/* TRANSPARENT CLOUD OVERLAYS — keep only the ornamental PNG artwork visible.
+   The previous pastel gradients belonged to the layer containers, which made
+   the whole viewport look like an opaque panel instead of floating clouds. */
+.scene-cloud-back,
+.scene-cloud-front{
+  background:transparent!important;
+  background-color:transparent!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+.scene-cloud-back .cloud-screen-glow,
+.scene-cloud-front .cloud-screen-glow{
+  display:none!important;
+  opacity:0!important;
+  background:transparent!important;
+}
+.cloud-back-art,
+.cloud-front-art{
+  background:transparent!important;
+  mix-blend-mode:normal!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  filter:drop-shadow(0 16px 20px #8179a51c)!important;
+}
+/* The second cloud stays larger, but neither layer paints a full-screen colour. */
+.cloud-back-art{
+  width:116vw!important;
+  height:112vh!important;
+  left:-8vw!important;
+  top:-6vh!important;
+}
+.cloud-front-art{
+  width:136vw!important;
+  height:128vh!important;
+  left:-18vw!important;
+  top:-12vh!important;
+}
+@media(max-width:800px){
+  .cloud-back-art{width:126vw!important;height:110vh!important;left:-13vw!important;top:-5vh!important}
+  .cloud-front-art{width:148vw!important;height:124vh!important;left:-24vw!important;top:-10vh!important}
+}
+@media(max-width:560px){
+  .cloud-back-art{width:150vw!important;height:100vh!important;left:-25vw!important;top:0!important}
+  .cloud-front-art{width:174vw!important;height:112vh!important;left:-37vw!important;top:-6vh!important}
+}
