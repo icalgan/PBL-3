@@ -85,18 +85,19 @@
       hero.style.setProperty('--middle-scroll', (-concertReveal * vh * .22).toFixed(1) + 'px');
       hero.style.setProperty('--front-scroll', (-concertReveal * vh * .86).toFixed(1) + 'px');
 
-      // Cloud back starts rising while the concert layers are moving away.
-      const backPhase = clamp((progress - .02) / .30, 0, 1);
+      // Cloud back rises in front of the audience. Its path starts fully below
+      // the viewport and ends flush with the sticky stage.
+      const backPhase = clamp((progress - .06) / .28, 0, 1);
       const cloudBack = hero.querySelector('.scene-cloud-back');
       if (cloudBack) {
-        cloudBack.style.setProperty('--cloud-back-y', ((1 - backPhase) * vh * .30).toFixed(1) + 'px');
+        cloudBack.style.setProperty('--cloud-back-y', ((1 - backPhase) * vh * 1.08).toFixed(1) + 'px');
       }
 
-      // The larger front cloud follows early and overlaps the back cloud.
-      const frontPhase = clamp((progress - .16) / .32, 0, 1);
+      // The larger foreground cloud follows after the back cloud has entered.
+      const frontPhase = clamp((progress - .32) / .30, 0, 1);
       const cloudFront = hero.querySelector('.scene-cloud-front');
       if (cloudFront) {
-        cloudFront.style.setProperty('--cloud-front-y', ((1 - frontPhase) * vh * .48).toFixed(1) + 'px');
+        cloudFront.style.setProperty('--cloud-front-y', ((1 - frontPhase) * vh * 1.12).toFixed(1) + 'px');
       }
 
       hero.style.setProperty('--scene-caption-opacity', clamp(progress * 2, 0, 1).toFixed(3));
