@@ -1950,3 +1950,48 @@ body{background:#fffafd;color:var(--ink)}
   background-color: transparent !important;
   mix-blend-mode: normal !important;
 }
+
+
+/* TRUE SEE-THROUGH CLOUDS:
+   Remove the stage tint overlay as well, so transparent pixels in the two PNGs
+   reveal the actual concert artwork behind them. */
+.hero-concert .concert-layer-wash{
+  display:none!important;
+  visibility:hidden!important;
+  opacity:0!important;
+  background:none!important;
+  background-color:transparent!important;
+}
+.hero-concert::after{
+  display:none!important;
+  content:none!important;
+  opacity:0!important;
+  background:none!important;
+}
+.hero-concert .scene-cloud-back,
+.hero-concert .scene-cloud-front{
+  background:transparent!important;
+  background-color:transparent!important;
+  background-image:none!important;
+  border:0!important;
+  box-shadow:none!important;
+  outline:0!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+.hero-concert .scene-cloud-back::before,
+.hero-concert .scene-cloud-back::after,
+.hero-concert .scene-cloud-front::before,
+.hero-concert .scene-cloud-front::after{
+  content:none!important;
+  display:none!important;
+  background:none!important;
+  opacity:0!important;
+}
+.hero-concert .scene-cloud-back .cloud-back-art,
+.hero-concert .scene-cloud-front .cloud-front-art{
+  background:transparent!important;
+  background-color:transparent!important;
+  opacity:1!important;
+  visibility:visible!important;
+}
