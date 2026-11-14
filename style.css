@@ -1904,3 +1904,49 @@ body{background:#fffafd;color:var(--ink)}
   .cloud-back-art{width:150vw!important;height:100vh!important;left:-25vw!important;top:0!important}
   .cloud-front-art{width:174vw!important;height:112vh!important;left:-37vw!important;top:-6vh!important}
 }
+
+
+/* FINAL OVERRIDE: cloud containers must not paint any pixels.
+   Only the transparent PNG files themselves are allowed to render. */
+.hero-concert .scene-cloud-back,
+.hero-concert .scene-cloud-front{
+  background: none !important;
+  background-color: rgba(0,0,0,0) !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  isolation: auto !important;
+}
+.hero-concert .scene-cloud-back::before,
+.hero-concert .scene-cloud-back::after,
+.hero-concert .scene-cloud-front::before,
+.hero-concert .scene-cloud-front::after{
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  opacity: 0 !important;
+}
+.hero-concert .scene-cloud-back > *,
+.hero-concert .scene-cloud-front > *{
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+.hero-concert .scene-cloud-back .cloud-screen-glow,
+.hero-concert .scene-cloud-front .cloud-screen-glow{
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+.hero-concert .scene-cloud-back .cloud-back-art,
+.hero-concert .scene-cloud-front .cloud-front-art{
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  mix-blend-mode: normal !important;
+}
