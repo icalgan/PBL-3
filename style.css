@@ -1995,3 +1995,98 @@ body{background:#fffafd;color:var(--ink)}
   opacity:1!important;
   visibility:visible!important;
 }
+
+
+/* =========================================================
+   CLOUD ARTWORK SCALE / CROPPING — viewport-spanning layers
+   Back uses 1000045837.png.
+   Front uses 1000045837 - Copy.png and extends beyond both edges.
+   The source PNGs are transparent; crop the tall transparent canvas
+   with object-fit: cover so the visible ornamental ribbon fills screen.
+   ========================================================= */
+.hero-concert .scene-cloud-back,
+.hero-concert .scene-cloud-front{
+  background:transparent!important;
+  background-color:transparent!important;
+  background-image:none!important;
+}
+.hero-concert .scene-cloud-back .cloud-back-art{
+  position:absolute!important;
+  display:block!important;
+  width:178vw!important;
+  height:190vh!important;
+  left:-39vw!important;
+  top:-45vh!important;
+  max-width:none!important;
+  object-fit:cover!important;
+  object-position:center 5%!important;
+  opacity:1!important;
+  visibility:visible!important;
+  background:transparent!important;
+  mix-blend-mode:normal!important;
+  filter:drop-shadow(0 18px 25px #6d6a9830)!important;
+  animation:cloudBackFloat 5.2s ease-in-out infinite!important;
+}
+.hero-concert .scene-cloud-front .cloud-front-art{
+  position:absolute!important;
+  display:block!important;
+  width:238vw!important;
+  height:250vh!important;
+  left:-69vw!important;
+  top:-65vh!important;
+  max-width:none!important;
+  object-fit:cover!important;
+  object-position:center 5%!important;
+  opacity:1!important;
+  visibility:visible!important;
+  background:transparent!important;
+  mix-blend-mode:normal!important;
+  filter:drop-shadow(0 22px 30px #6d6a9840)!important;
+  animation:cloudFrontFloat 4.7s ease-in-out infinite!important;
+}
+@keyframes cloudBackFloat{
+  0%,100%{transform:translate3d(0,0,0) rotate(-.35deg)}
+  50%{transform:translate3d(0,-17px,0) rotate(.35deg)}
+}
+@keyframes cloudFrontFloat{
+  0%,100%{transform:translate3d(0,0,0) rotate(.3deg) scale(1)}
+  50%{transform:translate3d(0,-23px,0) rotate(-.35deg) scale(1.012)}
+}
+
+/* Keep the cloud clips viewport-wide while their PNG artwork overflows both sides. */
+.hero-concert .scene-cloud-back,
+.hero-concert .scene-cloud-front{
+  inset:0!important;
+  overflow:hidden!important;
+  pointer-events:none!important;
+}
+@media(max-width:800px){
+  .hero-concert .scene-cloud-back .cloud-back-art{
+    width:192vw!important;height:184vh!important;
+    left:-46vw!important;top:-42vh!important;
+    object-position:center 5%!important;
+  }
+  .hero-concert .scene-cloud-front .cloud-front-art{
+    width:260vw!important;height:240vh!important;
+    left:-80vw!important;top:-64vh!important;
+    object-position:center 5%!important;
+  }
+}
+@media(max-width:560px){
+  .hero-concert .scene-cloud-back .cloud-back-art{
+    width:220vw!important;height:170vh!important;
+    left:-60vw!important;top:-35vh!important;
+    object-position:center 5%!important;
+  }
+  .hero-concert .scene-cloud-front .cloud-front-art{
+    width:290vw!important;height:220vh!important;
+    left:-95vw!important;top:-55vh!important;
+    object-position:center 5%!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-concert .scene-cloud-back .cloud-back-art,
+  .hero-concert .scene-cloud-front .cloud-front-art{
+    animation:none!important;
+  }
+}
