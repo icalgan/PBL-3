@@ -2351,3 +2351,65 @@ body{background:#fffafd;color:var(--ink)}
     animation:none!important;
   }
 }
+
+
+/* LAYER 3 — wider, lower foreground audience.
+   The PNG has a full purple background, so clip its upper area inside a
+   shorter bottom-anchored frame. This keeps the idols and stage visible. */
+.hero-concert .scene-layer-front-lowered{
+  position:absolute!important;
+  z-index:3!important;
+  top:auto!important;
+  bottom:-4vh!important;
+  left:0!important;
+  right:0!important;
+  width:100vw!important;
+  height:50vh!important;
+  overflow:hidden!important;
+  transform:translate3d(0,var(--front-scroll,0px),0)!important;
+  transform-origin:center bottom!important;
+  background:transparent!important;
+}
+.hero-concert .scene-layer-front-lowered .concert-crowd{
+  position:absolute!important;
+  display:block!important;
+  top:auto!important;
+  bottom:0!important;
+  left:50%!important;
+  width:150vw!important;
+  height:auto!important;
+  max-width:none!important;
+  max-height:none!important;
+  margin-left:-75vw!important;
+  object-fit:contain!important;
+  object-position:center bottom!important;
+  opacity:1!important;
+  visibility:visible!important;
+  background:transparent!important;
+  background-color:transparent!important;
+  mix-blend-mode:normal!important;
+  pointer-events:none!important;
+}
+
+/* On narrower screens the artwork is enlarged proportionally but remains
+   anchored to the bottom, leaving the performer area open above it. */
+@media(max-width:800px){
+  .hero-concert .scene-layer-front-lowered{
+    height:43vh!important;
+    bottom:-3vh!important;
+  }
+  .hero-concert .scene-layer-front-lowered .concert-crowd{
+    width:190vw!important;
+    margin-left:-95vw!important;
+  }
+}
+@media(max-width:560px){
+  .hero-concert .scene-layer-front-lowered{
+    height:39vh!important;
+    bottom:-2vh!important;
+  }
+  .hero-concert .scene-layer-front-lowered .concert-crowd{
+    width:220vw!important;
+    margin-left:-110vw!important;
+  }
+}
