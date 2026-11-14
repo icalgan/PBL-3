@@ -90,14 +90,14 @@
       const backPhase = clamp((progress - .06) / .28, 0, 1);
       const cloudBack = hero.querySelector('.scene-cloud-back');
       if (cloudBack) {
-        cloudBack.style.setProperty('--cloud-back-y', ((1 - backPhase) * vh * 1.08).toFixed(1) + 'px');
+        cloudBack.style.setProperty('--cloud-back-y', ((1 - backPhase) * vh * 1.55).toFixed(1) + 'px');
       }
 
       // The larger foreground cloud follows after the back cloud has entered.
       const frontPhase = clamp((progress - .32) / .30, 0, 1);
       const cloudFront = hero.querySelector('.scene-cloud-front');
       if (cloudFront) {
-        cloudFront.style.setProperty('--cloud-front-y', ((1 - frontPhase) * vh * 1.12).toFixed(1) + 'px');
+        cloudFront.style.setProperty('--cloud-front-y', ((1 - frontPhase) * vh * 1.78).toFixed(1) + 'px');
       }
 
       hero.style.setProperty('--scene-caption-opacity', clamp(progress * 2, 0, 1).toFixed(3));
