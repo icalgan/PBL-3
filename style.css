@@ -1075,3 +1075,176 @@ body{background:#fffafd;color:var(--ink)}
   }
   .cloud-transition-arrow{bottom:1%!important;width:27px!important;height:27px!important}
 }
+
+
+/* =========================================================
+   RE:CREATE IMMERSIVE SCROLL EXPERIENCE
+   Firewatch-inspired layered parallax + Dogstudio-inspired
+   subtle pointer response. Uses existing uploaded artwork.
+   ========================================================= */
+.hero-concert{
+  --hero-scroll:0px;
+  --pointer-x:0px;
+  --pointer-y:0px;
+  --hero-progress:0;
+  perspective:1100px;
+  transform-style:preserve-3d;
+  isolation:isolate;
+}
+.concert-stage-bg{
+  transform:translate3d(0,calc(var(--hero-scroll)*.16),0) scale(1.10)!important;
+  transform-origin:center center;
+  will-change:transform;
+  transition:filter .4s ease;
+}
+.concert-stage-overlay{
+  transform:translate3d(0,calc(var(--hero-scroll)*.22),0)!important;
+  will-change:transform;
+}
+.concert-mascots{
+  transform:translate3d(0,calc(var(--hero-scroll)*-.20),0)!important;
+  will-change:transform;
+}
+.concert-duo{
+  transform:translate3d(calc(var(--pointer-x)*.55),calc(var(--pointer-y)*.55 + var(--hero-scroll)*-.22),0) scale(calc(1 + var(--hero-progress)*.025))!important;
+  transform-origin:50% 58%;
+  transition:filter .35s ease;
+  will-change:transform;
+  filter:drop-shadow(0 22px 26px #34345a42);
+}
+.concert-crowd{
+  transform:translate3d(0,calc(var(--hero-scroll)*-.42),0)!important;
+  will-change:transform;
+}
+.hero-scroll-cue{
+  transform:translate3d(-50%,calc(var(--hero-scroll)*-.25),0)!important;
+}
+.stage-cloud-bridge{
+  transform:translate3d(0,calc(var(--hero-scroll)*-.34),0)!important;
+}
+
+/* The ornamental cloud ribbon is one cropped, full-bleed layer. */
+.cloud-transition{
+  --cloud-drift:0px;
+  --cloud-progress:0;
+  position:relative!important;
+  height:clamp(260px,24vw,390px)!important;
+  min-height:250px!important;
+  margin:0!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+  background:
+    linear-gradient(180deg,#b1a3d4 0%,#e9e1f4 40%,#fff8fc 100%)!important;
+}
+.cloud-transition .cloudscape-image{
+  position:absolute!important;
+  display:block!important;
+  z-index:2!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:fill!important;
+  opacity:1!important;
+  transform:translate3d(0,var(--cloud-drift),0) scale(1.015)!important;
+  transform-origin:center center;
+  filter:saturate(.92) brightness(1.04)!important;
+  will-change:transform;
+  pointer-events:none;
+}
+.cloud-transition:before,
+.cloud-transition:after,
+.cloud-transition .cloud-horizon{
+  display:none!important;
+  content:none!important;
+}
+.cloud-transition-stars{
+  position:absolute!important;
+  z-index:4!important;
+  top:48%!important;
+  left:0!important;
+  right:0!important;
+  opacity:.9!important;
+  color:#fff!important;
+  font-size:clamp(19px,2.4vw,30px)!important;
+  text-shadow:0 0 14px #fff,0 0 25px #ecaed5!important;
+  pointer-events:none!important;
+}
+.cloud-transition-arrow{
+  z-index:5!important;
+  bottom:5%!important;
+}
+.brand-intro-section{
+  position:relative!important;
+  z-index:1!important;
+  margin-top:0!important;
+  overflow:hidden!important;
+  background:
+    radial-gradient(ellipse at 10% 20%,#f6dff0 0,transparent 42%),
+    radial-gradient(ellipse at 90% 28%,#dceafb 0,transparent 45%),
+    linear-gradient(180deg,#fffafd,#f0eafa 68%,#e9effb)!important;
+}
+.brand-intro-panel{
+  opacity:1;
+  transform:translate3d(0,18px,0) scale(.985);
+  transition:transform .9s cubic-bezier(.2,.7,.2,1),opacity .9s ease;
+  will-change:transform,opacity;
+}
+.brand-intro-section.in-frame .brand-intro-panel{
+  opacity:1;
+  transform:translate3d(0,0,0) scale(1);
+}
+.brand-intro-stars{
+  animation:brandStarFloat 9s ease-in-out infinite alternate;
+}
+@keyframes brandStarFloat{
+  from{transform:translate3d(-8px,0,0)}
+  to{transform:translate3d(8px,-10px,0)}
+}
+
+/* The post-concert objects enter at different depths as they scroll into view. */
+.after-concert-section{
+  perspective:900px;
+  overflow:hidden;
+}
+.after-waste-illustration{
+  transform:translate3d(0,var(--waste-drift,0px),0);
+  transition:transform .12s linear;
+  will-change:transform;
+}
+.after-waste-illustration .waste-bottle{
+  transform:rotate(-13deg) translateY(calc(var(--waste-drift,0px)*-.20));
+}
+.after-waste-illustration .waste-cup{
+  transform:rotate(9deg) translateY(calc(var(--waste-drift,0px)*-.34));
+}
+.after-waste-illustration .waste-ticket{
+  transform:rotate(-12deg) translateY(calc(var(--waste-drift,0px)*-.12));
+}
+
+/* Gentle interactive depth on the idea cards. */
+.idea-card{
+  transform:perspective(900px) rotateX(var(--card-rx,0deg)) rotateY(var(--card-ry,0deg)) translateY(0);
+  transform-style:preserve-3d;
+  will-change:transform;
+}
+.idea-card:hover{
+  transform:perspective(900px) rotateX(var(--card-rx,0deg)) rotateY(var(--card-ry,0deg)) translateY(-7px);
+}
+@media(max-width:800px){
+  .concert-stage-bg{transform:translate3d(0,calc(var(--hero-scroll)*.10),0) scale(1.06)!important}
+  .concert-duo{transform:translate3d(0,calc(var(--hero-scroll)*-.12),0) scale(1.01)!important}
+  .concert-crowd{transform:translate3d(0,calc(var(--hero-scroll)*-.20),0)!important}
+  .cloud-transition{height:clamp(230px,30vw,320px)!important;min-height:230px!important}
+}
+@media(max-width:560px){
+  .concert-duo{transform:translate3d(0,calc(var(--hero-scroll)*-.08),0) scale(1)!important}
+  .cloud-transition{height:190px!important;min-height:180px!important}
+  .cloud-transition-stars{display:none!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .concert-stage-bg,.concert-stage-overlay,.concert-mascots,.concert-duo,.concert-crowd,.hero-scroll-cue,.stage-cloud-bridge,.cloudscape-image,.brand-intro-panel,.brand-intro-stars,.after-waste-illustration,.idea-card{
+    transform:none!important;
+    transition:none!important;
+    animation:none!important;
+  }
+}
