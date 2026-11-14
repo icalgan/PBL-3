@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20">
+  <link rel="stylesheet" href="style.css?v=21">
 
   <style>
     .recreate-sparkle{position:fixed!important;left:0;top:0;width:22px;height:22px;z-index:2147483647;pointer-events:none;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(232,105,165,.65));}
@@ -34,17 +34,21 @@
   </header>
 
   <main>
-    <section class="hero-concert" id="beranda">
-      <img class="concert-stage-bg" src="assets/394178b9-752a-4442-949c-551a76482c50.png" alt="" aria-hidden="true">
-      <div class="concert-stage-overlay" aria-hidden="true"></div>
-      <div class="hero-concert-inner">
-        <div class="concert-mascots" aria-label="Dua maskot RE:CREATE sedang tampil di konser">
-          <img class="concert-duo" src="assets/1498a3e3-4215-4c1d-807b-9ba67663f529.png" alt="Maskot perempuan bernyanyi dan maskot laki-laki memainkan gitar di panggung">
+    <section class="hero-concert scene-scroll-track" id="beranda" aria-label="RE:CREATE concert scene">
+      <div class="concert-sticky-scene">
+        <div class="scene-layer scene-layer-back" aria-hidden="true">
+          <img class="concert-stage-bg" src="assets/394178b9-752a-4442-949c-551a76482c50.png" alt="">
         </div>
-
+        <div class="concert-layer-wash" aria-hidden="true"></div>
+        <div class="scene-layer scene-layer-middle" aria-label="Dua maskot RE:CREATE sedang tampil di konser">
+          <img class="concert-duo" src="assets/1498a3e3-4215-4c1d-807b-9ba67663f529.png" alt="Maskot perempuan bernyanyi dan maskot laki-laki memainkan gitar">
+        </div>
+        <div class="scene-layer scene-layer-front" aria-hidden="true">
+          <img class="concert-crowd" src="assets/95d660d4-1c81-4105-bffc-032b4e8c1851.png" alt="">
+        </div>
+        <div class="hero-scroll-cue"><span>SCROLL TO THE AFTER PARTY</span><b>⌄</b></div>
+        <div class="scene-progress-caption" aria-hidden="true"><span>THE LAST SONG</span><i></i><span>THE CROWD TAKES OVER</span></div>
       </div>
-      <img class="concert-crowd" src="assets/95d660d4-1c81-4105-bffc-032b4e8c1851.png" alt="" aria-hidden="true">
-      <div class="hero-scroll-cue"><span>SCROLL TO THE AFTER PARTY</span><b>⌄</b></div>
     </section>
 
 
@@ -103,7 +107,7 @@
     <div class="footer-main section-wrap"><div class="footer-brand"><a class="brand" href="#beranda"><span class="brand-mark">↻</span><span>RE:<b>CREATE</b></span></a><p>Belajar, berkreasi, dan memberi hidup baru untuk sampah.</p><span class="footer-motto">Give waste a second life. ♡</span></div><div class="footer-links"><div><b>Jelajahi</b><a href="#after-concert">Tentang</a><a href="#kelola">Kelola Sampah</a><a href="#upcycling">Upcycling</a></div><div><b>Mulai dari sini</b><a href="#ide">Ide Kreasi</a><a href="#panduan">Panduan</a><a href="#aksi">Mulai Aksi</a></div><div><b>RE:CREATE</b><a href="mailto:hello@recreate.example">Kontak</a><a href="#beranda">Kembali ke atas ↑</a></div></div></div>
     <div class="footer-bottom section-wrap"><span>© 2026 RE:CREATE · Creative environmental learning.</span><span>Made with care & creativity <b>✦</b></span></div>
   </footer>
-  <script src="script.js?v=12"></script>
+  <script src="script.js?v=13"></script>
 
   <script>
   (function () {
