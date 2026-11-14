@@ -1599,3 +1599,160 @@ body{background:#fffafd;color:var(--ink)}
     transform:none!important;
   }
 }
+
+
+/* =========================================================
+   TWO NEW FOREGROUND CLOUD LAYERS
+   Order: Stage -> Performers -> Audience -> Cloud Back -> Cloud Front
+   Cloud overlays rise into the sticky scene as the visitor scrolls.
+   ========================================================= */
+.hero-concert.scene-scroll-track{
+  height:350vh!important;
+  min-height:350vh!important;
+  height:350svh!important;
+  min-height:350svh!important;
+  overflow:visible!important;
+}
+.concert-sticky-scene{
+  position:sticky!important;
+  top:0!important;
+  height:100vh!important;
+  height:100svh!important;
+  min-height:540px!important;
+  overflow:hidden!important;
+}
+.scene-layer-back{z-index:0!important}
+.concert-layer-wash{z-index:1!important}
+.scene-layer-middle{z-index:2!important}
+.scene-layer-front{z-index:3!important}
+
+/* Cloud back: large, wide, softly moving pastel overlay. */
+.scene-cloud-back{
+  position:absolute!important;
+  inset:0!important;
+  z-index:4!important;
+  display:block!important;
+  overflow:hidden!important;
+  background:linear-gradient(165deg,#f6e9f6 0%,#f8effb 45%,#dceafa 100%)!important;
+  border-radius:48% 48% 0 0 / 12% 12% 0 0!important;
+  transform:translate3d(0,var(--cloud-back-y,112vh),0)!important;
+  transform-origin:center bottom!important;
+  will-change:transform;
+}
+.cloud-screen-glow{
+  position:absolute!important;
+  inset:0!important;
+  z-index:0!important;
+  pointer-events:none!important;
+}
+.cloud-screen-glow-back{
+  background:
+    radial-gradient(ellipse at 12% 25%,#f5dff3 0%,transparent 43%),
+    radial-gradient(ellipse at 88% 18%,#dceafa 0%,transparent 44%),
+    linear-gradient(180deg,#fbf4fb 0%,#f2eafa 52%,#dceafb 100%)!important;
+}
+.cloud-back-art{
+  position:absolute!important;
+  z-index:1!important;
+  display:block!important;
+  width:154vw!important;
+  max-width:none!important;
+  height:132vh!important;
+  left:-27vw!important;
+  top:-15vh!important;
+  object-fit:fill!important;
+  object-position:center!important;
+  opacity:1!important;
+  filter:saturate(.84) brightness(1.04) drop-shadow(0 14px 24px #7f8dc522)!important;
+  animation:cloudBackBob 5.1s ease-in-out infinite!important;
+  transform-origin:center center!important;
+  will-change:transform;
+  pointer-events:none!important;
+}
+
+/* Cloud front: same visual family, but larger and closer to the viewer. */
+.scene-cloud-front{
+  position:absolute!important;
+  inset:0!important;
+  z-index:5!important;
+  display:block!important;
+  overflow:hidden!important;
+  background:linear-gradient(150deg,#fceaf5 0%,#f5eafa 40%,#d7e9fa 100%)!important;
+  border-radius:46% 46% 0 0 / 15% 15% 0 0!important;
+  transform:translate3d(0,var(--cloud-front-y,125vh),0)!important;
+  transform-origin:center bottom!important;
+  will-change:transform;
+}
+.cloud-screen-glow-front{
+  background:
+    radial-gradient(ellipse at 17% 22%,#f8d9ec 0%,transparent 45%),
+    radial-gradient(ellipse at 85% 14%,#d9eafa 0%,transparent 46%),
+    linear-gradient(180deg,#fff7fc 0%,#f8e9f5 52%,#d5e8f9 100%)!important;
+}
+.cloud-front-art{
+  position:absolute!important;
+  z-index:1!important;
+  display:block!important;
+  width:178vw!important;
+  max-width:none!important;
+  height:150vh!important;
+  left:-39vw!important;
+  top:-24vh!important;
+  object-fit:fill!important;
+  object-position:center!important;
+  opacity:1!important;
+  filter:saturate(.80) brightness(1.05) drop-shadow(0 20px 30px #7988c133)!important;
+  animation:cloudFrontBob 4.6s ease-in-out infinite!important;
+  transform-origin:center center!important;
+  will-change:transform;
+  pointer-events:none!important;
+}
+
+@keyframes cloudBackBob{
+  0%,100%{transform:translate3d(0,0,0) rotate(-.35deg)}
+  50%{transform:translate3d(0,-19px,0) rotate(.45deg)}
+}
+@keyframes cloudFrontBob{
+  0%,100%{transform:translate3d(0,0,0) scale(1) rotate(.3deg)}
+  50%{transform:translate3d(0,-25px,0) scale(1.018) rotate(-.45deg)}
+}
+
+/* Once the foreground cloud has covered the concert, the next section is revealed. */
+.brand-intro-section{
+  position:relative!important;
+  z-index:1!important;
+  margin-top:0!important;
+}
+.brand-intro-panel{
+  opacity:.9;
+  transform:translate3d(0,25px,0) scale(.985);
+  transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);
+}
+.brand-intro-section.in-frame .brand-intro-panel{
+  opacity:1;
+  transform:translate3d(0,0,0) scale(1);
+}
+@media(max-width:800px){
+  .hero-concert.scene-scroll-track{
+    height:330vh!important;
+    min-height:330vh!important;
+    height:330svh!important;
+    min-height:330svh!important;
+  }
+  .cloud-back-art{width:170vw!important;left:-35vw!important;height:125vh!important;top:-12vh!important}
+  .cloud-front-art{width:198vw!important;left:-49vw!important;height:144vh!important;top:-20vh!important}
+}
+@media(max-width:560px){
+  .hero-concert.scene-scroll-track{
+    height:315vh!important;
+    min-height:315vh!important;
+    height:315svh!important;
+    min-height:315svh!important;
+  }
+  .concert-sticky-scene{min-height:500px!important}
+  .cloud-back-art{width:210vw!important;left:-55vw!important;height:112vh!important;top:-6vh!important}
+  .cloud-front-art{width:238vw!important;left:-69vw!important;height:130vh!important;top:-15vh!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .cloud-back-art,.cloud-front-art{animation:none!important}
+}
