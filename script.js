@@ -68,18 +68,25 @@
   const after = document.querySelector('.after-concert-section');
   let ticking = false;
 
-  // Layered parallax: backdrop, stage lights, artists and audience have
-  // different travel speeds to create depth while scrolling.
+  // Three-layer sticky concert scene: different parallax speeds create overlap.
   const updateScenes = () => {
     const vh = window.innerHeight || 1;
 
     if (hero) {
+      const stickyScene = hero.querySelector('.concert-sticky-scene');
+      const travel = Math.max(hero.offsetHeight - (stickyScene ? stickyScene.offsetHeight : vh), 1);
       const rect = hero.getBoundingClientRect();
-      const progress = clamp(-rect.top / Math.max(rect.height, 1), 0, 1);
-      hero.style.setProperty('--background-y', (-progress * 54).toFixed(1) + 'px');
-      hero.style.setProperty('--lights-y', (-progress * 78).toFixed(1) + 'px');
-      hero.style.setProperty('--performers-y', (-progress * 108).toFixed(1) + 'px');
-      hero.style.setProperty('--crowd-y', (-progress * 148).toFixed(1) + 'px');
+      const progress = clamp(-rect.top / travel, 0, 1);
+
+      hero.style.setProperty('--scene-progress', progress.toFixed(3));
+      hero.style.setProperty('--back-scroll', (-progress * vh * .10).toFixed(1) + 'px');
+      hero.style.setProperty('--middle-scroll', (-progress * vh * .26).toFixed(1) + 'px');
+      // The foreground audience rises faster and progressively covers the performers.
+      hero.style.setProperty('--front-scroll', (-progress * vh * .88).toFixed(1) + 'px');
+      hero.style.setProperty('--scene-caption-opacity', clamp(progress * 2, 0, 1).toFixed(3));
+
+      const cue = hero.querySelector('.hero-scroll-cue');
+      if (cue) cue.style.opacity = String(clamp(1 - progress * 2.2, 0, 1));
     }
 
     if (cloud) {
@@ -111,6 +118,7 @@
     window.addEventListener('load', updateScenes, { once: true });
   }
 
+
   // Pointer spotlight and performer depth response.
   if (hero && finePointer && !reduceMotion) {
     hero.addEventListener('pointermove', event => {
@@ -119,14 +127,18 @@
       const y = (event.clientY - rect.top) / rect.height;
       hero.style.setProperty('--mouse-x', (x * 100).toFixed(1) + '%');
       hero.style.setProperty('--mouse-y', (y * 100).toFixed(1) + '%');
-      hero.style.setProperty('--duo-x', ((x - .5) * 15).toFixed(1) + 'px');
-      hero.style.setProperty('--duo-y', ((y - .5) * 11).toFixed(1) + 'px');
+      hero.style.setProperty('--duo-x', ((x - .5) * 13).toFixed(1) + 'px');
+      hero.style.setProperty('--duo-y', ((y - .5) * 9).toFixed(1) + 'px');
+      const duo = hero.querySelector('.concert-duo');
+      if (duo) duo.style.marginLeft = ((x - .5) * 18).toFixed(1) + 'px';
     }, { passive: true });
     hero.addEventListener('pointerleave', () => {
       hero.style.setProperty('--mouse-x', '50%');
       hero.style.setProperty('--mouse-y', '42%');
       hero.style.setProperty('--duo-x', '0px');
       hero.style.setProperty('--duo-y', '0px');
+      const duo = hero.querySelector('.concert-duo');
+      if (duo) duo.style.marginLeft = '0px';
     }, { passive: true });
   }
 
