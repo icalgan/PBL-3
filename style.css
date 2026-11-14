@@ -1248,3 +1248,163 @@ body{background:#fffafd;color:var(--ink)}
     animation:none!important;
   }
 }
+
+
+/* ============================================================
+   FINAL IMMERSIVE PASS — layered scene motion + actual artwork
+   ============================================================ */
+.hero-concert{
+  --background-y:0px;
+  --lights-y:0px;
+  --performers-y:0px;
+  --crowd-y:0px;
+  --mouse-x:50%;
+  --mouse-y:42%;
+  --duo-x:0px;
+  --duo-y:0px;
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+}
+.hero-concert::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  opacity:.45;
+  background:radial-gradient(circle at var(--mouse-x) var(--mouse-y),#fff8 0,transparent 28%);
+  mix-blend-mode:screen;
+}
+.concert-stage-bg{
+  transform:translate3d(0,var(--background-y),0) scale(1.10)!important;
+  transform-origin:center center;
+  will-change:transform;
+}
+.concert-stage-overlay{
+  transform:translate3d(0,var(--lights-y),0)!important;
+  will-change:transform;
+}
+.concert-mascots{
+  transform:translate3d(0,var(--performers-y),0)!important;
+  will-change:transform;
+}
+.concert-duo{
+  transform:translate3d(var(--duo-x),var(--duo-y),0)!important;
+  transform-origin:50% 58%;
+  transition:filter .35s ease;
+  will-change:transform;
+  filter:drop-shadow(0 22px 28px #34345a48);
+  animation:duoIdle 8s ease-in-out infinite;
+}
+.concert-crowd{
+  transform:translate3d(0,var(--crowd-y),0)!important;
+  will-change:transform;
+}
+@keyframes duoIdle{
+  0%,100%{filter:drop-shadow(0 22px 28px #34345a48)}
+  50%{filter:drop-shadow(0 28px 32px #34345a5e)}
+}
+
+/* Cloud transition: display the supplied artwork as a bold full-width ribbon.
+   object-fit:cover crops the empty upper/lower canvas instead of shrinking the art. */
+.cloud-transition{
+  --cloud-y:0px;
+  --cloud-scale:1.04;
+  --cloud-pos:24%;
+  position:relative!important;
+  display:block!important;
+  width:100%!important;
+  height:clamp(350px,25vw,500px)!important;
+  min-height:350px!important;
+  margin:0!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+  border:0!important;
+  border-radius:0!important;
+  background:
+    radial-gradient(ellipse at 50% 48%,#fffafd 0%,#f7edf8 58%,transparent 86%),
+    linear-gradient(180deg,#d4c8e8 0%,#f9edf8 50%,#e5effb 100%)!important;
+}
+.cloud-transition .cloudscape-image{
+  position:absolute!important;
+  inset:0!important;
+  z-index:2!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center var(--cloud-pos)!important;
+  opacity:1!important;
+  mix-blend-mode:normal!important;
+  filter:saturate(.94) brightness(1.02)!important;
+  transform:translate3d(0,var(--cloud-y),0) scale(var(--cloud-scale))!important;
+  transform-origin:center center;
+  will-change:transform,object-position;
+  pointer-events:none;
+}
+.cloud-transition .cloud-horizon,
+.cloud-transition:before,
+.cloud-transition:after{
+  display:none!important;
+  content:none!important;
+}
+.cloud-transition-stars{
+  z-index:4!important;
+  top:48%!important;
+  color:#fff!important;
+  text-shadow:0 0 14px #fff,0 0 26px #e7a6d2!important;
+  pointer-events:none!important;
+}
+.cloud-transition-arrow{
+  z-index:5!important;
+  bottom:5%!important;
+}
+.brand-intro-section{
+  position:relative!important;
+  z-index:1!important;
+  margin-top:0!important;
+  overflow:hidden!important;
+}
+.brand-intro-panel{
+  opacity:.84;
+  transform:translate3d(0,26px,0) scale(.985);
+  transition:transform .95s cubic-bezier(.18,.72,.22,1),opacity .95s ease;
+  will-change:transform,opacity;
+}
+.brand-intro-section.in-frame .brand-intro-panel{
+  opacity:1;
+  transform:translate3d(0,0,0) scale(1);
+}
+.brand-intro-stars{
+  animation:brandStarFloat 9s ease-in-out infinite alternate;
+}
+@keyframes brandStarFloat{
+  from{transform:translate3d(-9px,0,0)}
+  to{transform:translate3d(9px,-10px,0)}
+}
+.idea-card{
+  transform:perspective(900px) rotateX(var(--card-rx,0deg)) rotateY(var(--card-ry,0deg)) translateY(0);
+  transform-style:preserve-3d;
+  will-change:transform;
+}
+.idea-card:hover{
+  transform:perspective(900px) rotateX(var(--card-rx,0deg)) rotateY(var(--card-ry,0deg)) translateY(-7px);
+}
+@media(max-width:800px){
+  .cloud-transition{height:clamp(290px,39vw,380px)!important;min-height:290px!important}
+  .cloud-transition .cloudscape-image{object-position:center 23%!important}
+  .concert-duo{animation:none!important}
+}
+@media(max-width:560px){
+  .cloud-transition{height:250px!important;min-height:240px!important}
+  .cloud-transition .cloudscape-image{object-position:center 23%!important}
+  .cloud-transition-stars{display:none!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .concert-stage-bg,.concert-stage-overlay,.concert-mascots,.concert-duo,.concert-crowd,.cloudscape-image,.brand-intro-panel,.brand-intro-stars,.idea-card{
+    transform:none!important;
+    transition:none!important;
+    animation:none!important;
+  }
+}
