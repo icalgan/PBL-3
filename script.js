@@ -16,20 +16,21 @@
     const rect = hero.getBoundingClientRect();
     const progress = clamp(-rect.top / scrollRange,0,1);
 
-    // Layers 1–3 leave upward at staggered speeds.
-    const exit = clamp(progress / 0.68,0,1);
-    if(stage) stage.style.setProperty('--stage-y',(-exit * vh * 1.12)+'px');
-    if(idols) idols.style.setProperty('--idols-y',(-exit * vh * 1.22)+'px');
-    if(audience) audience.style.setProperty('--audience-y',(-exit * vh * 1.34)+'px');
+    // Keep the first three concert layers visible while they drift gently upward.
+    // They should be covered by the incoming foreground, not disappear beforehand.
+    const drift = clamp(progress / 0.95,0,1);
+    if(stage) stage.style.setProperty('--stage-y',(-drift * vh * 0.08)+'px');
+    if(idols) idols.style.setProperty('--idols-y',(-drift * vh * 0.14)+'px');
+    if(audience) audience.style.setProperty('--audience-y',(-drift * vh * 0.20)+'px');
 
-    // Layer 4 rises from below, covers the concert, then moves away
-    // to reveal the solid lavender purple base.
-    const enter = clamp((progress - 0.30) / 0.34,0,1);
-    const leave = clamp((progress - 0.76) / 0.22,0,1);
-    const finaleY = ((1-enter) * vh * 1.12) - (leave * vh * 1.20);
+    // Layer 4 enters from below early, with its original PNG proportions.
+    // Its transparent top reveals the concert first; the lavender audience
+    // silhouette and purple field then sweep upward to cover the scene.
+    const enter = clamp((progress - 0.08) / 0.78,0,1);
+    const finaleY = (1-enter) * vh * 1.16 - enter * vh * 0.22;
     if(finale) finale.style.setProperty('--finale-y',finaleY+'px');
 
-    if(cue) cue.style.opacity = String(clamp(1-progress*3,0,1));
+    if(cue) cue.style.opacity = String(clamp(1-progress*2.5,0,1));
     scheduled = false;
   }
 
