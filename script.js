@@ -36,13 +36,15 @@
     // Use the PNG's real dimensions: its opaque purple field begins about
     // 22.36% down the image. Align that boundary with the top of the viewport
     // at the end of the transition, so the purple area fills the screen neatly.
-    const entrance = smoothstep(clamp((progress - 0.04) / 0.82,0,1));
+    const entrance = smoothstep(clamp(progress / 0.56,0,1));
     const sourceImageHeight = viewportWidth * 1.09154;
     const solidFieldStart = sourceImageHeight * 0.22364;
     const finaleTopOffset = clamp(viewportHeight * 0.05,20,60);
     const finalCoverOffset = -(solidFieldStart + finaleTopOffset) - 2;
 
-    const startOffset = viewportHeight * 1.12;
+    // Start the silhouette just below the main audience from the very first frame.
+    // It now appears immediately instead of waiting far below the viewport.
+    const startOffset = viewportHeight * 0.16;
     const finaleY = startOffset + (finalCoverOffset - startOffset) * entrance;
 
     if(finale){
