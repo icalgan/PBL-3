@@ -64,9 +64,9 @@ body{font-family:Arial,sans-serif}
   object-position:center;
 }
 
-/* LAYER 2 — idol duo cutout */
+/* LAYER 2 — Neon crowd artwork sits behind the performers */
 .layer-idols{
-  z-index:2;
+  z-index:3;
   transform:translate3d(0,var(--idols-y,0),0);
 }
 .layer-idols img{
@@ -79,9 +79,9 @@ body{font-family:Arial,sans-serif}
   animation:idol-float 4.8s ease-in-out infinite;
 }
 
-/* LAYER 3 — original audience artwork */
+/* LAYER 3 — Neon crowd artwork acts as the stage backdrop, not an opaque foreground */
 .layer-audience{
-  z-index:3;
+  z-index:2;
   transform:translate3d(0,var(--audience-y,0),0);
 }
 .layer-audience img{
