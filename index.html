@@ -3,153 +3,30 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#fffaf7">
-  <meta name="description" content="RE:CREATE — ruang belajar kreatif tentang pengelolaan sampah dan upcycling untuk kehidupan yang lebih berkelanjutan.">
-  <title>RE:CREATE — Give Waste a Second Life</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=36">
-
-  <style>
-    .recreate-sparkle{position:fixed!important;left:0;top:0;width:22px;height:22px;z-index:2147483647;pointer-events:none;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(232,105,165,.65));}
-    .recreate-sparkle.trail{animation:recreateTrail .85s ease-out forwards}
-    .recreate-sparkle.burst{animation:recreateBurst .9s cubic-bezier(.15,.7,.2,1) forwards}
-    @keyframes recreateTrail{0%{opacity:0;transform:translate(-50%,-50%) scale(.15) rotate(-25deg)}20%{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(10deg)}100%{opacity:0;transform:translate(-50%,-70%) scale(.12) rotate(65deg)}}
-    @keyframes recreateBurst{0%{opacity:0;transform:translate(-50%,-50%) scale(.12) rotate(-25deg)}20%{opacity:1;transform:translate(-50%,-50%) scale(1.05) rotate(8deg)}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.15) rotate(85deg)}}
-  </style>
+  <meta name="theme-color" content="#ad8dcc">
+  <title>RE:CREATE — Concert Transition Test</title>
+  <link rel="stylesheet" href="style.css?v=37">
 </head>
 <body>
-  <div class="top-wash" aria-hidden="true"></div>
-  <header class="site-header">
-    <a class="brand" href="#beranda" aria-label="RE:CREATE beranda">
-      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M20 5 11 20h9l5-9zM28 5l9 15h-9l-5-9zM7 25l9 15 5-8-5-7zM41 25 32 40l-5-8 5-7z" fill="currentColor"/><path d="m18 25 6-4 6 4v8l-6 4-6-4z" fill="#fffaf7"/></svg></span>
-      <span>RE:<b>CREATE</b></span>
-    </a>
-    <button class="menu-toggle" aria-label="Buka navigasi" aria-expanded="false">☰</button>
-    <nav class="main-nav" aria-label="Navigasi utama">
-      <a class="active" href="#beranda">Beranda</a><a href="#brand-intro">Tentang</a><a href="#kelola">Kelola Sampah</a><a href="#upcycling">Upcycling</a><a href="#aksi">Mulai Aksi</a>
-    </nav>
-    <a class="header-cta" href="#upcycling">Jelajahi <span>↗</span></a>
-  </header>
-
   <main>
-    <section class="hero-concert scene-scroll-track" id="beranda" aria-label="RE:CREATE concert scene">
+    <section class="hero-concert" id="beranda" aria-label="RE:CREATE concert transition">
       <div class="concert-sticky-scene">
-        <div class="scene-layer scene-layer-back" aria-hidden="true">
-          <img class="concert-stage-bg" src="assets/394178b9-752a-4442-949c-551a76482c50.png" alt="">
+        <div class="scene-layer layer-stage" aria-hidden="true">
+          <img src="assets/394178b9-752a-4442-949c-551a76482c50.png" alt="">
         </div>
-        <div class="scene-layer scene-layer-middle" aria-label="Pastel Pink-Haired Idol Duo tampil di panggung">
-          <img class="concert-duo" src="assets/Pastel%20Pink-Haired%20Idol%20Duo.png" alt="Duo idol berambut pink pastel bernyanyi dan bermain gitar">
+        <div class="scene-layer layer-idols" aria-hidden="true">
+          <img src="assets/Pastel%20Pink-Haired%20Idol%20Duo.png" alt="">
         </div>
-        <div class="scene-layer scene-layer-front" aria-hidden="true">
-          <img class="concert-crowd" src="assets/95d660d4-1c81-4105-bffc-032b4e8c1851.png" alt="">
+        <div class="scene-layer layer-audience" aria-hidden="true">
+          <img src="assets/95d660d4-1c81-4105-bffc-032b4e8c1851.png" alt="">
         </div>
-        <div class="scene-layer scene-layer-crowd-finale" aria-hidden="true">
-          <img class="crowd-finale-art" src="assets/crowd_unyu_transparan_2.png" alt="">
+        <div class="scene-layer layer-finale" aria-hidden="true">
+          <img src="assets/crowd_unyu_transparan_2.png" alt="">
         </div>
-        <div class="hero-scroll-cue"><span>SCROLL TO THE AFTER PARTY</span><b>⌄</b></div>
-        <div class="scene-progress-caption" aria-hidden="true"><span>THE LAST SONG</span><i></i><span>ONE LAST WAVE</span></div>
+        <div class="scroll-cue">SCROLL TO CONTINUE <span>⌄</span></div>
       </div>
-    </section>
-
-
-
-
-    <section class="brand-intro-section" id="brand-intro">
-      <div class="brand-intro-stars" aria-hidden="true">✦　✧　✦　✧　✦</div>
-      <div class="brand-intro-panel">
-        <span class="eyebrow">A CONCERT, A MEMORY, A SECOND CHANCE</span>
-        <h1>RE:<em>CREATE</em></h1>
-        <p class="concert-tagline">Dari Konser, Untuk Lingkungan</p>
-        <p class="concert-description">Musik menyatukan kita. Yuk, pastikan jejak setelah konser membawa dampak yang baik untuk bumi.</p>
-        <a class="button button-pink" href="#after-concert">Mulai jelajahi <span>↓</span></a>
-      </div>
-    </section>
-
-    <section class="after-concert-section section-wrap" id="after-concert">\n      <div class="after-copy"><span class="eyebrow">THE MORNING AFTER</span><h2>Setelah konser,<br><em>apa yang tersisa?</em></h2><p>Euforia konser sering meninggalkan jejak sampah dalam jumlah besar. Botol minum, gelas plastik, tiket, kertas, hingga kemasan makanan bisa ditemukan setelah acara selesai.</p></div><div class="after-waste-illustration" aria-hidden="true"><span class="waste-bottle"></span><span class="waste-cup"></span><span class="waste-ticket"></span><span class="waste-wrapper"></span><span class="waste-spark">✦</span></div><div class="after-waste-tags"><span>♧ Botol plastik</span><span>✉ Kertas & tiket</span><span>▧ Kemasan lainnya</span></div>\n    </section>\n\n    <section class="waste-section section-wrap" id="kelola">
-      <div class="section-heading reveal"><span class="eyebrow">SORT IT WITH CARE</span><h2>Sampah bukan <em>akhir cerita.</em></h2><p>Pisahkan sampah sesuai jenisnya agar bisa diproses dengan cara yang tepat. Ini langkah awal sebelum recycling dan upcycling.</p></div>
-      <div class="waste-grid">
-        <article class="waste-card card-blue reveal"><div class="card-illustration organic" aria-hidden="true"><span>♧</span><i>✿</i></div><div><span class="card-kicker">01 / MUDAH TERURAI</span><h3>Organik</h3><p>Sisa makanan, daun, dan bahan alami yang dapat terurai. Bisa diolah menjadi kompos.</p><a href="#panduan" class="round-link" aria-label="Pelajari sampah organik">↗</a></div></article>
-        <article class="waste-card card-pink reveal"><div class="card-illustration inorganic" aria-hidden="true"><span>♧</span><i>↻</i></div><div><span class="card-kicker">02 / DAPAT DIMANFAATKAN</span><h3>Anorganik</h3><p>Plastik, kertas, kaca, dan logam. Pilah sesuai bahan agar dapat didaur ulang.</p><a href="#panduan" class="round-link" aria-label="Pelajari sampah anorganik">↗</a></div></article>
-        <article class="waste-card card-cream reveal"><div class="card-illustration hazard" aria-hidden="true"><span>!</span><i>✦</i></div><div><span class="card-kicker">03 / PERLU PENANGANAN KHUSUS</span><h3>B3</h3><p>Bahan berbahaya dan beracun seperti baterai atau lampu. Jangan campur dengan sampah biasa.</p><a href="#panduan" class="round-link" aria-label="Pelajari sampah B3">↗</a></div></article>
-      </div>
-      <div class="mini-tip reveal" id="panduan"><span class="tip-icon">✳</span><p><b>Quick tip:</b> Kosongkan dan bersihkan kemasan sebelum memasukkannya ke tempat daur ulang.</p><a href="#aksi">Lihat tips lainnya →</a></div>
-    </section>
-
-    <section class="upcycle-section" id="upcycling">
-      <div class="upcycle-inner section-wrap">
-        <div class="upcycle-art reveal" aria-hidden="true"><div class="upcycle-ring"></div><img class="upcycle-character" src="assets/f_4.png" alt=""><img class="upcycle-recycle" src="assets/1000045835.png" alt=""><span class="upcycle-spark s1">✦</span><span class="upcycle-spark s2">✧</span><div class="upcycle-label">MAKE<br>IT NEW!</div></div>
-        <div class="upcycle-copy reveal"><span class="eyebrow">FROM WASTE TO WONDER</span><h2>Dari sisa konser,<br>jadi <em>karya baru.</em></h2><p>Upcycling adalah proses kreatif mengubah barang bekas menjadi produk baru dengan fungsi atau nilai yang lebih tinggi. Bukan sekadar membuang—kita memberi kesempatan kedua.</p><a class="button button-blue" href="#ide">Temukan ide upcycling <span>→</span></a><div class="upcycle-footnote">Less waste, more imagination.</div></div>
-      </div>
-    </section>
-
-    <section class="ideas-section section-wrap" id="ide">
-      <div class="section-heading reveal"><span class="eyebrow">MAKE SOMETHING LOVELY</span><h2>Ide kecil, <em>kreasi besar.</em></h2><p>Mulai dari benda di sekitarmu. Pilih ide, siapkan bahan, dan coba buat versimu sendiri.</p></div>
-      <div class="ideas-grid">
-        <article class="idea-card reveal"><div class="idea-visual visual-can"><img class="idea-character" src="assets/f_5.png" alt="" aria-hidden="true"><span>✿</span><small>DIY 01</small></div><div class="idea-info"><span class="difficulty">MUDAH · 15 MENIT</span><h3>Pot mini dari kaleng</h3><p>Ubah kaleng bekas menjadi rumah baru untuk tanaman kecil.</p><a href="#aksi">Lihat langkah <b>↗</b></a></div></article>
-        <article class="idea-card reveal"><div class="idea-visual visual-bag"><img class="idea-character" src="assets/f_6.png" alt="" aria-hidden="true"><span>✳</span><small>DIY 02</small></div><div class="idea-info"><span class="difficulty">MUDAH · 30 MENIT</span><h3>Tote bag kain perca</h3><p>Satukan potongan kain menjadi tas yang unik dan personal.</p><a href="#aksi">Lihat langkah <b>↗</b></a></div></article>
-        <article class="idea-card reveal"><div class="idea-visual visual-jar"><img class="idea-character" src="assets/f_1.png" alt="" aria-hidden="true"><span>✧</span><small>DIY 03</small></div><div class="idea-info"><span class="difficulty">MUDAH · 20 MENIT</span><h3>Organizer dari botol</h3><p>Manfaatkan botol plastik untuk merapikan alat tulis.</p><a href="#aksi">Lihat langkah <b>↗</b></a></div></article>
-      </div>
-    </section>
-
-    <section class="action-section section-wrap reveal" id="aksi">
-      <div class="action-pattern" aria-hidden="true">✳　〰　✿　〰　✳</div>
-      <img class="action-ornament" src="assets/1000045838.png" alt="" aria-hidden="true">
-      <span class="eyebrow">YOUR TURN TO CREATE</span><h2>Barang bekas bukan<br>akhir dari <em>sebuah cerita.</em></h2><p>Mulai dari satu benda, satu ide, dan satu aksi kecil hari ini.</p><a class="button button-pink" href="#kelola">Mulai langkah kecil <span>→</span></a>
-      <div class="action-stamp">RE<br><b>↻</b><br>CREATE</div>
     </section>
   </main>
-
-  <footer class="site-footer">
-    <div class="footer-main section-wrap"><div class="footer-brand"><a class="brand" href="#beranda"><span class="brand-mark">↻</span><span>RE:<b>CREATE</b></span></a><p>Belajar, berkreasi, dan memberi hidup baru untuk sampah.</p><span class="footer-motto">Give waste a second life. ♡</span></div><div class="footer-links"><div><b>Jelajahi</b><a href="#after-concert">Tentang</a><a href="#kelola">Kelola Sampah</a><a href="#upcycling">Upcycling</a></div><div><b>Mulai dari sini</b><a href="#ide">Ide Kreasi</a><a href="#panduan">Panduan</a><a href="#aksi">Mulai Aksi</a></div><div><b>RE:CREATE</b><a href="mailto:hello@recreate.example">Kontak</a><a href="#beranda">Kembali ke atas ↑</a></div></div></div>
-    <div class="footer-bottom section-wrap"><span>© 2026 RE:CREATE · Creative environmental learning.</span><span>Made with care & creativity <b>✦</b></span></div>
-  </footer>
-  <script src="script.js?v=20"></script>
-
-  <script>
-  (function () {
-    var starAsset = 'https://raw.githubusercontent.com/icalgan/PBL-3/main/assets/1000045836%20-%20Copy.png?v=4';
-    var lastMove = 0;
-    function sparkle(x, y, kind, dx, dy, size) {
-      var img = document.createElement('img');
-      img.className = 'recreate-sparkle ' + kind;
-      img.src = starAsset;
-      img.alt = '';
-      img.draggable = false;
-      img.style.left = x + 'px';
-      img.style.top = y + 'px';
-      img.style.width = size + 'px';
-      img.style.height = size + 'px';
-      img.style.setProperty('--dx', dx + 'px');
-      img.style.setProperty('--dy', dy + 'px');
-      img.onerror = function () {
-        img.removeAttribute('src');
-        img.style.objectFit = 'contain';
-        img.style.background = 'transparent';
-        img.alt = '✦';
-        img.style.color = '#e879ad';
-        img.style.fontSize = '22px';
-      };
-      document.body.appendChild(img);
-      window.setTimeout(function(){ img.remove(); }, 1000);
-    }
-    document.addEventListener('mousemove', function (event) {
-      var now = Date.now();
-      if (now - lastMove < 75) return;
-      lastMove = now;
-      sparkle(event.clientX, event.clientY, 'trail', 0, -18, 18 + Math.random() * 8);
-    }, true);
-    document.addEventListener('click', function (event) {
-      for (var i = 0; i < 9; i++) {
-        var angle = (Math.PI * 2 * i) / 9;
-        var distance = 26 + Math.random() * 22;
-        sparkle(event.clientX, event.clientY, 'burst',
-          Math.cos(angle) * distance, Math.sin(angle) * distance,
-          20 + Math.random() * 8);
-      }
-    }, true);
-  })();
-  </script>
+  <script src="script.js?v=21"></script>
 </body>
 </html>
