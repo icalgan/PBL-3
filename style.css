@@ -2488,3 +2488,195 @@ body{background:#fffafd;color:var(--ink)}
     mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.08) 20%,rgba(0,0,0,.55) 48%,#000 74%)!important;
   }
 }
+
+
+/* =========================================================
+   RE:CREATE — FOUR LAYER PURPLE SCROLL SEQUENCE
+   1 Stage / 2 transparent idol duo / 3 audience /
+   4 transparent crowd flourish. No ornamental cloud layers.
+   The sticky scene's solid lavender base is revealed at the end.
+   ========================================================= */
+.hero-concert.scene-scroll-track{
+  position:relative!important;
+  display:block!important;
+  width:100%!important;
+  height:330svh!important;
+  min-height:330svh!important;
+  margin:0!important;
+  padding:0!important;
+  overflow:visible!important;
+  isolation:isolate!important;
+  background:#ad8dcc!important;
+}
+.hero-concert .concert-sticky-scene{
+  position:sticky!important;
+  top:0!important;
+  width:100%!important;
+  height:100svh!important;
+  min-height:540px!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+  background:#ad8dcc!important;
+}
+.hero-concert .scene-layer{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  pointer-events:none!important;
+  will-change:transform,opacity;
+  background:transparent!important;
+}
+
+/* Layer 1 — concert stage background */
+.hero-concert .scene-layer-back{
+  z-index:0!important;
+  transform:translate3d(0,var(--stage-y,0px),0)!important;
+  background:transparent!important;
+}
+.hero-concert .concert-stage-bg{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  max-height:none!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+  background:transparent!important;
+  animation:stageFloat 7.5s ease-in-out infinite!important;
+}
+
+/* Layer 2 — transparent idol duo, no black or coloured backing */
+.hero-concert .scene-layer-middle{
+  z-index:2!important;
+  transform:translate3d(0,var(--idol-y,0px),0)!important;
+  background:transparent!important;
+}
+.hero-concert .concert-duo{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  background:transparent!important;
+  background-color:transparent!important;
+  mix-blend-mode:normal!important;
+  opacity:1!important;
+  visibility:visible!important;
+  filter:drop-shadow(0 14px 18px #40335a20)!important;
+  animation:performerFloat 4.7s ease-in-out infinite!important;
+  transform-origin:50% 58%!important;
+}
+
+/* Layer 3 — transparent audience cutout, full viewport width */
+.hero-concert .scene-layer-front{
+  z-index:3!important;
+  inset:0!important;
+  transform:translate3d(0,var(--audience-y,0px),0)!important;
+  background:transparent!important;
+}
+.hero-concert .concert-crowd{
+  position:absolute!important;
+  display:block!important;
+  left:50%!important;
+  bottom:-1px!important;
+  top:auto!important;
+  width:100vw!important;
+  height:auto!important;
+  max-width:none!important;
+  max-height:92vh!important;
+  margin-left:-50vw!important;
+  object-fit:contain!important;
+  object-position:center bottom!important;
+  background:transparent!important;
+  background-color:transparent!important;
+  mix-blend-mode:normal!important;
+  opacity:1!important;
+  visibility:visible!important;
+  filter:drop-shadow(0 -8px 17px #40335a30)!important;
+  animation:crowdFloat 5.2s ease-in-out infinite!important;
+  transform-origin:center bottom!important;
+}
+
+/* Layer 4 — crowd_unyu_transparan_2, the final foreground wave */
+.hero-concert .scene-layer-crowd-finale{
+  z-index:4!important;
+  inset:0!important;
+  transform:translate3d(0,var(--finale-y,110vh),0)!important;
+  background:transparent!important;
+}
+.hero-concert .crowd-finale-art{
+  position:absolute!important;
+  display:block!important;
+  left:50%!important;
+  bottom:-1px!important;
+  top:auto!important;
+  width:100vw!important;
+  height:100vh!important;
+  max-width:none!important;
+  max-height:none!important;
+  margin-left:-50vw!important;
+  object-fit:cover!important;
+  object-position:center bottom!important;
+  background:transparent!important;
+  background-color:transparent!important;
+  mix-blend-mode:normal!important;
+  opacity:1!important;
+  visibility:visible!important;
+  filter:drop-shadow(0 -12px 20px #47375e26)!important;
+}
+
+/* Purple is the underlying canvas; after the four images move away,
+   the sticky viewport naturally holds on this plain colour. */
+.hero-concert .concert-sticky-scene,
+.hero-concert.scene-scroll-track{
+  background:#ad8dcc!important;
+}
+.hero-concert .concert-layer-wash,
+.hero-concert .scene-cloud-back,
+.hero-concert .scene-cloud-front,
+.hero-concert .cloud-back-art,
+.hero-concert .cloud-front-art{
+  display:none!important;
+}
+.hero-concert .concert-sticky-scene::before,
+.hero-concert .concert-sticky-scene::after,
+.hero-concert .scene-layer::before,
+.hero-concert .scene-layer::after{
+  content:none!important;
+  display:none!important;
+  background:none!important;
+  opacity:0!important;
+}
+.hero-concert .hero-scroll-cue,
+.hero-concert .scene-progress-caption{
+  z-index:8!important;
+}
+
+/* Reduced footprint for smaller screens without losing full-bleed crowd width. */
+@media(max-width:800px){
+  .hero-concert.scene-scroll-track{height:310svh!important;min-height:310svh!important}
+  .hero-concert .concert-duo{width:112%!important;left:-6%!important}
+  .hero-concert .concert-crowd{width:118vw!important;margin-left:-59vw!important;max-height:78vh!important}
+  .hero-concert .crowd-finale-art{width:120vw!important;height:90vh!important;margin-left:-60vw!important}
+}
+@media(max-width:560px){
+  .hero-concert.scene-scroll-track{height:300svh!important;min-height:300svh!important}
+  .hero-concert .concert-sticky-scene{min-height:500px!important}
+  .hero-concert .concert-duo{width:124%!important;left:-12%!important}
+  .hero-concert .concert-crowd{width:132vw!important;margin-left:-66vw!important;max-height:68vh!important}
+  .hero-concert .crowd-finale-art{width:140vw!important;height:78vh!important;margin-left:-70vw!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-concert .concert-stage-bg,
+  .hero-concert .concert-duo,
+  .hero-concert .concert-crowd{
+    animation:none!important;
+  }
+}
