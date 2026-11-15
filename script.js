@@ -36,15 +36,18 @@
     // Use the PNG's real dimensions: its opaque purple field begins about
     // 22.36% down the image. Align that boundary with the top of the viewport
     // at the end of the transition, so the purple area fills the screen neatly.
-    const entrance = smoothstep(clamp(progress / 0.56,0,1));
+    // 90% quicker entrance: complete the reveal in about 29.5% of
+    // the former scroll range, with an ease-out curve that reacts immediately.
+    const entranceProgress = clamp(progress / 0.295,0,1);
+    const entrance = 1 - Math.pow(1 - entranceProgress,3);
+
     const sourceImageHeight = viewportWidth * 1.09154;
     const solidFieldStart = sourceImageHeight * 0.22364;
     const finaleTopOffset = clamp(viewportHeight * 0.05,20,60);
     const finalCoverOffset = -(solidFieldStart + finaleTopOffset) - 2;
 
-    // Start the silhouette just below the main audience from the very first frame.
-    // It now appears immediately instead of waiting far below the viewport.
-    const startOffset = viewportHeight * 0.16;
+    // Let the crowd silhouette peek into the viewport from the beginning.
+    const startOffset = viewportHeight * 0.016;
     const finaleY = startOffset + (finalCoverOffset - startOffset) * entrance;
 
     if(finale){
