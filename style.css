@@ -123,3 +123,30 @@ body{font-family:Arial,sans-serif}
 @media(prefers-reduced-motion:reduce){
   .layer-idols img{animation:none}
 }
+
+
+/* Layer 5 — duplicate foreground crowd wave, above Layer 4 */
+.layer-finale-front{
+  z-index:5;
+  transform:translate3d(0,var(--finale-front-y,112svh),0);
+  transform-origin:center bottom;
+}
+.layer-finale-front img{
+  left:50%;
+  bottom:0;
+  width:112vw;
+  height:108svh;
+  max-width:none;
+  max-height:none;
+  margin-left:-56vw;
+  object-fit:cover;
+  object-position:center bottom;
+  transform:translateX(0) scale(1.025);
+}
+@media(max-width:700px){
+  .layer-finale-front img{
+    width:132vw;
+    height:100svh;
+    margin-left:-66vw;
+  }
+}
