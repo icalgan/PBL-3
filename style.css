@@ -146,3 +146,44 @@ body{font-family:Arial,sans-serif}
 @media(prefers-reduced-motion:reduce){
   .layer-idols img{animation:none}
 }
+
+
+/* FIX: preserve crowd_unyu_transparan_2 original image ratio.
+   Do not stretch/crop it into a screen-sized rectangle. */
+.layer-finale{
+  position:absolute!important;
+  inset:0!important;
+  z-index:4!important;
+  width:100%!important;
+  height:100%!important;
+  overflow:visible!important;
+  background:transparent!important;
+  transform:translate3d(0,var(--finale-y,115svh),0)!important;
+  will-change:transform;
+}
+.layer-finale img{
+  position:absolute!important;
+  display:block!important;
+  left:0!important;
+  top:0!important;
+  bottom:auto!important;
+  width:100vw!important;
+  height:auto!important;
+  min-height:0!important;
+  max-width:none!important;
+  max-height:none!important;
+  margin:0!important;
+  object-fit:initial!important;
+  object-position:initial!important;
+  transform:none!important;
+  background:transparent!important;
+  opacity:1!important;
+  visibility:visible!important;
+}
+@media(max-width:700px){
+  .layer-finale img{
+    width:100vw!important;
+    height:auto!important;
+    object-fit:initial!important;
+  }
+}
