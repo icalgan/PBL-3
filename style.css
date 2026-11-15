@@ -1,9 +1,10 @@
-/* RE:CREATE — clean four-layer concert transition */
+/* RE:CREATE — four layered concert scene */
 :root{
   --purple:#ad8dcc;
   --pink:#f5a6d0;
   --blue:#a8d9f3;
-  --crowd-band:clamp(110px,24.4vw,460px);
+  --crowd-image-ratio:1.09154; /* 1252 / 1147 */
+  --crowd-solid-start:0.22364; /* top of the solid purple field in source PNG */
 }
 *{box-sizing:border-box}
 html,body{
@@ -50,7 +51,7 @@ body{font-family:Arial,sans-serif}
   pointer-events:none;
 }
 
-/* LAYER 1 — concert stage */
+/* LAYER 1 — stage background */
 .layer-stage{
   z-index:1;
   transform:translate3d(0,var(--stage-y,0),0);
@@ -63,7 +64,7 @@ body{font-family:Arial,sans-serif}
   object-position:center;
 }
 
-/* LAYER 2 — idol duo; preserve the transparent PNG cutout */
+/* LAYER 2 — idol duo cutout */
 .layer-idols{
   z-index:2;
   transform:translate3d(0,var(--idols-y,0),0);
@@ -78,7 +79,7 @@ body{font-family:Arial,sans-serif}
   animation:idol-float 4.8s ease-in-out infinite;
 }
 
-/* LAYER 3 — concert audience */
+/* LAYER 3 — original audience artwork */
 .layer-audience{
   z-index:3;
   transform:translate3d(0,var(--audience-y,0),0);
@@ -93,11 +94,11 @@ body{font-family:Arial,sans-serif}
   transform:translateX(-50%);
 }
 
-/* LAYER 4 — silhouette band + a matching purple fill.
-   Important: show only the top 22.3% of the PNG (the transparent area
-   and crowd silhouette). The opaque rectangular lower part of the PNG is
-   clipped away. A CSS purple panel continues underneath it, matching
-   the page background exactly, so there is no visible rectangular box. */
+/* LAYER 4 — crowd_unyu_transparan_2.
+   No clip-path, no pseudo-element and no fake purple rectangle.
+   Its transparent top reveals the three layers behind it. The artwork is
+   slightly lower than Layer 3; its original lavender body blends into
+   the page's lavender background as it rises. */
 .layer-finale{
   position:absolute;
   inset:0;
@@ -107,22 +108,11 @@ body{font-family:Arial,sans-serif}
   transform:translate3d(0,var(--finale-y,115svh),0);
   will-change:transform;
 }
-.layer-finale::before{
-  content:"";
-  position:absolute;
-  z-index:0;
-  left:0;
-  right:0;
-  top:var(--crowd-band);
-  bottom:0;
-  background:var(--purple);
-}
 .layer-finale img{
   position:absolute;
-  z-index:1;
   display:block;
   left:0;
-  top:0;
+  top:clamp(20px,5vh,60px);
   width:100vw;
   height:auto;
   max-width:none;
@@ -134,9 +124,7 @@ body{font-family:Arial,sans-serif}
   background:transparent;
   opacity:1;
   visibility:visible;
-  /* Crop off the solid rectangular colour field from the source PNG.
-     Keep only its transparent top and the curved crowd silhouette. */
-  clip-path:inset(0 0 77.7% 0);
+  clip-path:none;
   pointer-events:none;
 }
 
@@ -163,15 +151,13 @@ body{font-family:Arial,sans-serif}
   0%,100%{translate:0 0}
   50%{translate:0 -14px}
 }
-
 @media(max-width:700px){
   .hero-concert{height:330svh}
   .layer-idols img{width:112%;left:-6%}
   .layer-audience img{width:125vw}
-  :root{--crowd-band:clamp(95px,25vw,260px)}
   .layer-finale img{
     width:100vw;
-    clip-path:inset(0 0 77.7% 0);
+    top:clamp(18px,4vh,36px);
   }
 }
 @media(prefers-reduced-motion:reduce){
