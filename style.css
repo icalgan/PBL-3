@@ -150,3 +150,38 @@ body{font-family:Arial,sans-serif}
     margin-left:-66vw;
   }
 }
+
+
+/* Keep the actual crowd_unyu artwork's top silhouette visible.
+   The previous object-position: bottom cropped away the audience edge and
+   showed only its solid lavender fill, making it resemble kotak_ungu_transparan. */
+.layer-finale img,
+.layer-finale-front img{
+  object-position:center top!important;
+  object-fit:cover!important;
+}
+.layer-finale img{
+  width:100vw!important;
+  height:100svh!important;
+  left:50%!important;
+  margin-left:-50vw!important;
+}
+.layer-finale-front img{
+  width:112vw!important;
+  height:108svh!important;
+  left:50%!important;
+  margin-left:-56vw!important;
+  object-position:center top!important;
+}
+@media(max-width:700px){
+  .layer-finale img{
+    width:110vw!important;
+    height:100svh!important;
+    margin-left:-55vw!important;
+  }
+  .layer-finale-front img{
+    width:132vw!important;
+    height:100svh!important;
+    margin-left:-66vw!important;
+  }
+}
