@@ -66,43 +66,36 @@
   const hero = document.querySelector('.hero-concert');
   const after = document.querySelector('.after-concert-section');
   let ticking = false;
-
-  // Five visual layers are staged on one sticky timeline:
-  // stage -> performers -> audience -> back cloud -> larger front cloud.
   const updateScenes = () => {
     const vh = window.innerHeight || 1;
 
     if (hero) {
-      const stickyScene = hero.querySelector('.concert-sticky-scene');
-      const travel = Math.max(hero.offsetHeight - (stickyScene ? stickyScene.offsetHeight : vh), 1);
+      const sticky = hero.querySelector('.concert-sticky-scene');
+      const travel = Math.max(hero.offsetHeight - (sticky ? sticky.offsetHeight : vh), 1);
       const rect = hero.getBoundingClientRect();
       const progress = clamp(-rect.top / travel, 0, 1);
 
-      // First sequence: the audience rises, followed by the performers and stage.
-      const concertReveal = clamp(progress / .27, 0, 1);
-      hero.style.setProperty('--scene-progress', progress.toFixed(3));
-      hero.style.setProperty('--back-scroll', (-concertReveal * vh * .08).toFixed(1) + 'px');
-      hero.style.setProperty('--middle-scroll', (-concertReveal * vh * .22).toFixed(1) + 'px');
-      hero.style.setProperty('--front-scroll', (-concertReveal * vh * .86).toFixed(1) + 'px');
+      // Layers 1–3 travel upward at slightly different rates.
+      const concertExit = clamp(progress / .58, 0, 1);
+      const stage = hero.querySelector('.scene-layer-back');
+      const idols = hero.querySelector('.scene-layer-middle');
+      const audience = hero.querySelector('.scene-layer-front');
+      const finale = hero.querySelector('.scene-layer-crowd-finale');
 
-      // Cloud back rises in front of the audience. Its path starts fully below
-      // the viewport and ends flush with the sticky stage.
-      const backPhase = clamp((progress - .05) / .36, 0, 1);
-      const cloudBack = hero.querySelector('.scene-cloud-back');
-      if (cloudBack) {
-        cloudBack.style.setProperty('--cloud-back-y', ((1 - backPhase) * vh * 1.62).toFixed(1) + 'px');
-      }
+      if (stage) stage.style.setProperty('--stage-y', (-concertExit * vh * 1.10).toFixed(1) + 'px');
+      if (idols) idols.style.setProperty('--idol-y', (-concertExit * vh * 1.24).toFixed(1) + 'px');
+      if (audience) audience.style.setProperty('--audience-y', (-concertExit * vh * 1.38).toFixed(1) + 'px');
 
-      // The larger foreground cloud follows after the back cloud has entered.
-      const frontPhase = clamp((progress - .30) / .42, 0, 1);
-      const cloudFront = hero.querySelector('.scene-cloud-front');
-      if (cloudFront) {
-        cloudFront.style.setProperty('--cloud-front-y', ((1 - frontPhase) * vh * 1.88).toFixed(1) + 'px');
-      }
+      // Layer 4 enters from below after the concert layers begin to leave,
+      // covers the scene, then travels upward to reveal the plain purple canvas.
+      const finaleIn = clamp((progress - .34) / .30, 0, 1);
+      const finaleOut = clamp((progress - .74) / .20, 0, 1);
+      const finaleY = (1 - finaleIn) * vh * 1.12 - finaleOut * vh * 1.18;
+      if (finale) finale.style.setProperty('--finale-y', finaleY.toFixed(1) + 'px');
 
-      hero.style.setProperty('--scene-caption-opacity', clamp(progress * 2, 0, 1).toFixed(3));
+      hero.style.setProperty('--scene-caption-opacity', clamp(progress * 1.8, 0, 1).toFixed(3));
       const cue = hero.querySelector('.hero-scroll-cue');
-      if (cue) cue.style.opacity = String(clamp(1 - progress * 2.8, 0, 1));
+      if (cue) cue.style.opacity = String(clamp(1 - progress * 2.5, 0, 1));
     }
 
     if (after) {
@@ -119,12 +112,11 @@
     window.requestAnimationFrame(updateScenes);
   };
 
-  // Scroll choreography remains available for this interaction; reduced-motion
-  // only disables the continuous floating/bobbing animations in CSS.
   updateScenes();
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', updateScenes, { passive: true });
   window.addEventListener('load', updateScenes, { once: true });
+
 
   // Pointer spotlight and performer depth response.
   const pointerScene = hero ? (hero.querySelector('.concert-sticky-scene') || hero) : null;
@@ -133,20 +125,19 @@
       const rect = pointerScene.getBoundingClientRect();
       const x = (event.clientX - rect.left) / rect.width;
       const y = (event.clientY - rect.top) / rect.height;
+      const stickyRect = pointerScene.getBoundingClientRect();
       hero.style.setProperty('--mouse-x', (x * 100).toFixed(1) + '%');
       hero.style.setProperty('--mouse-y', (y * 100).toFixed(1) + '%');
-      hero.style.setProperty('--duo-x', ((x - .5) * 13).toFixed(1) + 'px');
-      hero.style.setProperty('--duo-y', ((y - .5) * 9).toFixed(1) + 'px');
       const duo = hero.querySelector('.concert-duo');
-      if (duo) duo.style.marginLeft = ((x - .5) * 18).toFixed(1) + 'px';
+      if (duo) duo.style.filter = 'drop-shadow(' + ((x - .5) * 8).toFixed(1) + 'px 14px 18px #40335a25)';
     }, { passive: true });
     pointerScene.addEventListener('pointerleave', () => {
       hero.style.setProperty('--mouse-x', '50%');
       hero.style.setProperty('--mouse-y', '42%');
-      hero.style.setProperty('--duo-x', '0px');
-      hero.style.setProperty('--duo-y', '0px');
+      hero.style.setProperty('--mouse-x', '50%');
+      hero.style.setProperty('--mouse-y', '42%');
       const duo = hero.querySelector('.concert-duo');
-      if (duo) duo.style.marginLeft = '0px';
+      if (duo) duo.style.filter = '';
     }, { passive: true });
   }
 
