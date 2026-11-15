@@ -1,4 +1,4 @@
-/* RE:CREATE — isolated concert transition test */
+/* RE:CREATE — isolated four-layer concert transition */
 :root{
   --purple:#ad8dcc;
   --pink:#f5a6d0;
@@ -49,7 +49,10 @@ body{font-family:Arial,sans-serif}
 }
 
 /* Layer 1 — concert stage */
-.layer-stage{z-index:1;transform:translate3d(0,var(--stage-y,0),0)}
+.layer-stage{
+  z-index:1;
+  transform:translate3d(0,var(--stage-y,0),0);
+}
 .layer-stage img{
   inset:0;
   width:100%;
@@ -59,7 +62,10 @@ body{font-family:Arial,sans-serif}
 }
 
 /* Layer 2 — transparent idol duo */
-.layer-idols{z-index:2;transform:translate3d(0,var(--idols-y,0),0)}
+.layer-idols{
+  z-index:2;
+  transform:translate3d(0,var(--idols-y,0),0);
+}
 .layer-idols img{
   inset:0;
   width:100%;
@@ -70,7 +76,10 @@ body{font-family:Arial,sans-serif}
 }
 
 /* Layer 3 — audience */
-.layer-audience{z-index:3;transform:translate3d(0,var(--audience-y,0),0)}
+.layer-audience{
+  z-index:3;
+  transform:translate3d(0,var(--audience-y,0),0);
+}
 .layer-audience img{
   left:50%;
   bottom:0;
@@ -81,17 +90,26 @@ body{font-family:Arial,sans-serif}
   transform:translateX(-50%);
 }
 
-/* Layer 4 — transparent foreground crowd */
-.layer-finale{z-index:4;transform:translate3d(0,var(--finale-y,110svh),0)}
+/* Layer 4 — crowd_unyu_transparan_2 is the only foreground overlay */
+.layer-finale{
+  z-index:4;
+  transform:translate3d(0,var(--finale-y,110svh),0);
+}
 .layer-finale img{
   left:50%;
   bottom:0;
   width:100vw;
-  height:100%;
-  object-fit:cover;
-  object-position:center bottom;
-  transform:translateX(-50%);
+  height:100svh;
+  max-width:none;
+  max-height:none;
+  margin-left:-50vw;
+  object-fit:fill;
+  object-position:center top;
+  transform:translateX(0);
 }
+
+/* The transparent upper area reveals the concert; lavender lower area
+   becomes the plain purple transition once the crowd reaches the viewport. */
 .scroll-cue{
   position:absolute;
   z-index:10;
@@ -110,6 +128,7 @@ body{font-family:Arial,sans-serif}
   transition:opacity .2s linear;
 }
 .scroll-cue span{font-size:24px;line-height:1}
+
 @keyframes idol-float{
   0%,100%{translate:0 0}
   50%{translate:0 -14px}
@@ -118,70 +137,12 @@ body{font-family:Arial,sans-serif}
   .hero-concert{height:330svh}
   .layer-idols img{width:112%;left:-6%}
   .layer-audience img{width:125vw}
-  .layer-finale img{width:130vw}
+  .layer-finale img{
+    width:100vw;
+    height:100svh;
+    object-fit:fill;
+  }
 }
 @media(prefers-reduced-motion:reduce){
   .layer-idols img{animation:none}
-}
-
-
-/* Layer 5 — duplicate foreground crowd wave, above Layer 4 */
-.layer-finale-front{
-  z-index:5;
-  transform:translate3d(0,var(--finale-front-y,112svh),0);
-  transform-origin:center bottom;
-}
-.layer-finale-front img{
-  left:50%;
-  bottom:0;
-  width:112vw;
-  height:108svh;
-  max-width:none;
-  max-height:none;
-  margin-left:-56vw;
-  object-fit:cover;
-  object-position:center bottom;
-  transform:translateX(0) scale(1.025);
-}
-@media(max-width:700px){
-  .layer-finale-front img{
-    width:132vw;
-    height:100svh;
-    margin-left:-66vw;
-  }
-}
-
-
-/* Keep the actual crowd_unyu artwork's top silhouette visible.
-   The previous object-position: bottom cropped away the audience edge and
-   showed only its solid lavender fill, making it resemble kotak_ungu_transparan. */
-.layer-finale img,
-.layer-finale-front img{
-  object-position:center top!important;
-  object-fit:cover!important;
-}
-.layer-finale img{
-  width:100vw!important;
-  height:100svh!important;
-  left:50%!important;
-  margin-left:-50vw!important;
-}
-.layer-finale-front img{
-  width:112vw!important;
-  height:108svh!important;
-  left:50%!important;
-  margin-left:-56vw!important;
-  object-position:center top!important;
-}
-@media(max-width:700px){
-  .layer-finale img{
-    width:110vw!important;
-    height:100svh!important;
-    margin-left:-55vw!important;
-  }
-  .layer-finale-front img{
-    width:132vw!important;
-    height:100svh!important;
-    margin-left:-66vw!important;
-  }
 }
